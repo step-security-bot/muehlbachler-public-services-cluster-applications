@@ -32,7 +32,6 @@ jobs:
         directory:
           - applications
           - core
-          - home-assistant
           - infrastructure
           - library
 
