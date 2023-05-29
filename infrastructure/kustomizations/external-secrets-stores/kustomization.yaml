@@ -1,0 +1,10 @@
+---
+generators:
+  - ./secret-generator.yml
+
+resources:
+  - ./stores/aiven.yml
+  - ./stores/authentik.yml
+  - ./stores/cert-manager.yml
+  - ./stores/email.yml
+  - ./stores/external-dns.yml

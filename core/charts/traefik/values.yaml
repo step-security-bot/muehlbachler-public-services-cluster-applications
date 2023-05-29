@@ -1,0 +1,45 @@
+---
+traefik:
+  fullnameOverride: traefik
+
+  tolerations:
+    - operator: Exists
+  
+  nodeSelector:
+    dc: hetzner
+
+  providers:
+    kubernetesIngress:
+      publishedService:
+        enabled: true
+
+  additionalArguments:
+    - "--serversTransport.insecureSkipVerify=true"
+    - "--providers.kubernetesingress.allowexternalnameservices=true"
+    - "--providers.kubernetesingress.allowEmptyServices=true"
+
+  ports:
+    traefik:
+      expose: false
+    web:
+      redirectTo: websecure
+    ldaps:
+      port: 8636
+      expose: true
+      exposedPort: 636
+      protocol: TCP
+
+  service:
+    type: ClusterIP
+    # FIXME: external-dns needs to support IPv6 first - https://github.com/kubernetes-sigs/external-dns/pull/2461
+    # ipFamilyPolicy: PreferDualStack
+    spec:
+      externalIPs: []
+
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi

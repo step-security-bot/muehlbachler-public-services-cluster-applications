@@ -1,0 +1,30 @@
+---
+external-dns:
+  image:
+    registry: registry.k8s.io
+    repository: external-dns/external-dns
+    tag: v0.13.4
+
+  tolerations:
+    - operator: Exists
+
+  sources:
+    - service
+    - ingress
+
+  interval: 5m
+
+  logLevel: debug
+
+  txtOwnerId: external-dns-public-cluster-dev-google
+  provider: google
+  google:
+    serviceAccountSecret: external-dns-google
+
+  resources:
+    requests:
+      cpu: 5m
+      memory: 64Mi
+    limits:
+      cpu: 10m
+      memory: 80Mi

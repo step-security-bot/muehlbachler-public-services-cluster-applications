@@ -1,0 +1,30 @@
+---
+external-secrets:
+  tolerations:
+    - operator: Exists
+
+  resources:
+    requests:
+      cpu: 5m
+      memory: 64Mi
+    limits:
+      cpu: 50m
+      memory: 96Mi
+    
+  webhook:
+    resources:
+      requests:
+        cpu: 5m
+        memory: 48Mi
+      limits:
+        cpu: 50m
+        memory: 64Mi
+    
+  certController:
+    resources:
+      requests:
+        cpu: 5m
+        memory: 96Mi
+      limits:
+        cpu: 50m
+        memory: 128Mi

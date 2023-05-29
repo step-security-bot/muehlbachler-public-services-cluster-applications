@@ -1,0 +1,38 @@
+---
+ldap:
+  domain: ldap.domain.org
+
+authentik:
+  ingress:
+    enabled: true
+
+  authentik:
+    email:
+      port: 587
+      timeout: 30
+      host: ""
+      username: ""
+      password: ""
+      use_tls: ""
+      use_ssl: ""
+      from: ""
+    postgresql:
+      port: ""
+      host: ""
+      name: ""
+      user: ""
+      password: ""
+
+  envFrom:
+    - secretRef:
+        name: authentik-email-config
+    - secretRef:
+        name: authentik-config
+    - secretRef:
+        name: authentik-secrets
+  
+  redis:
+    enabled: true
+    master:
+      persistence:
+        enabled: false
