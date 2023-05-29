@@ -1,6 +1,6 @@
 dependencies:
 - name: authentik
   repository: https://charts.goauthentik.io
-  version: 2023.5.1
-digest: sha256:a1421c8b8204fdb0cb16fca3520726a83c712ca987d1d483efb71739bc5581d9
-generated: "2023-05-19T08:19:12.950966+02:00"
+  version: 2023.5.2
+digest: sha256:14694b0b174dfba87d3155db8c4a393fab4f0d0b7fd1a15027251bcf56c1198c
+generated: "2023-05-29T07:30:09.152101958Z"
