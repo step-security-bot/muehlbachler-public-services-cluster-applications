@@ -1,9 +1,9 @@
-# Homelab: Kubernetes Home Cluster - Applications
+# Homelab: Kubernetes Public Cluster - Applications
 
-[![Build status](https://img.shields.io/github/actions/workflow/status/muhlba91/homelab-kubernetes-home-applications/pipeline.yml?style=for-the-badge)](https://github.com/muhlba91/homelab-kubernetes-home-applications/actions/workflows/pipeline.yml)
-[![License](https://img.shields.io/github/license/muhlba91/homelab-kubernetes-home-applications?style=for-the-badge)](LICENSE.md)
+[![Build status](https://img.shields.io/github/actions/workflow/status/muhlba91/homelab-kubernetes-public-applications/pipeline.yml?style=for-the-badge)](https://github.com/muhlba91/homelab-kubernetes-public-applications/actions/workflows/pipeline.yml)
+[![License](https://img.shields.io/github/license/muhlba91/homelab-kubernetes-public-applications?style=for-the-badge)](LICENSE.md)
 
-This repository contains applications deployed on the `home-cluster` via [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) using [GitOps](https://opengitops.dev).
+This repository contains applications deployed on the `public-cluster` via [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) using [GitOps](https://opengitops.dev).
 
 ---
 
@@ -30,7 +30,6 @@ These are bootstrapping the main ArgoCD projects and applications, referring to 
 - [`infrastructure`](#infrastructure): core cluster infrastructure, like Cilium and ArgoCD
 - [`core`](#core-applications): core applications, like [cert-manager](http://cert-manager.io) and [traefik](https://traefik.io)
 - [`applications`](#user-applications): (user) applications running on the cluster/network
-- [`home-assistant`](#home-assistant): [Home Assistant](http://home-assistant.io) related applications
 
 Each of these applications follows the app-of-apps pattern again using subcharts defined in the respective `charts` directory.
 
@@ -56,11 +55,8 @@ The following applications are defined in [`infrastructure/charts`](infrastructu
 
 - [x] [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) - Manages the applications deployed on the cluster using GitOps.
 - [x] [Cilium](https://cilium.io) - Provides the cluster CNI.
-- [x] [CSI NFS Driver](https://github.com/kubernetes-csi/csi-driver-nfs/tree/master) - Exposes the NAS' NFS storage as a Kubernetes `StorageClass`.
 - [x] [Descheduler](https://github.com/kubernetes-sigs/descheduler) - Finds pods to be evicted for optimizing node usage.
 - [x] [External Secrets Operator](http://external-secrets.io) - Synchronizes secrets from external stores to Kubernetes `Secret` objects.
-- [x] [MetalLB](https://metallb.universe.tf) - Provides a Kubernetes network load balancer to expose Kubernetes `Service`s.
-- [x] [Rook Ceph](https://rook.io) - Exposes the Ceph storage cluster on Proxmox as Kubernetes `StorageClass`es.
 
 #### Kustomizations
 
@@ -78,39 +74,13 @@ The following applications are defined in [`core/charts`](core/charts).
 
 The following applications are defined in [`applications/charts`](applications/charts).
 
-- [x] [AdGuard](https://adguard.com/en/adguard-home/overview.html) - DNS server with ad filtering/blocking capabilities.
-- [x] [CoreDNS](https://coredns.io) - DNS resolver for internal, local only, domains.
-- [x] [dnsmasq](https://thekelleys.org.uk/dnsmasq/doc.html) - IPv4 and IPv6 DHCP server.
-- [x] [External DNS with CoreDNS/etcd integration](https://github.com/kubernetes-sigs/external-dns) - Creates DNS records in CoreDNS/etcs for internal, local only, reachable services.
-- [x] External Services - Deploys Kubernetes `Service`s and `Ingress`es to local endpoints, and existing services outside of the cluster.
-- [x] [Grafana](http://grafana.com) - Visualization of metrics, and other data.
-- [x] [MinIO](https://min.io) - Local object storage.
-
-### Home Assistant
-
-The following applications are defined in [`home-assistant/charts`](home-assistant/charts).
-
-- [x] [EMQX](https://www.emqx.io) - A MQTT broker.
-- [x] [Home Assistant](https://home-assistant.io) - The Home Assistant instance.
-- [x] [Node-RED](https://nodered.org) - Automation based on flows and Home Assistant data.
-- [x] [Ring MQTT](https://github.com/tsightler/ring-mqtt) - Amazon Ring devices to MQTT bridge.
-- [x] [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/) - Forwards Home Assistant state changes to a local [InfluxDB](https://www.influxdata.com) instance.
-- [x] [Z-Wave JS UI](https://github.com/zwave-js/zwave-js-ui) - Full featured Z-Wave Control Panel and MQTT Gateway.
-
-#### Notes: Backup and Restore
-
-Home Assistant related backup and restore is currently handled via Git, and RWX volumes.
-
-Upon pod start an `initContainer` as well as nightly `CronJob`s are backing up data to a Git repository.
-If no data is found in the Persistent Volume yet, the data from Git will be copied over which results in a full restore.
+- [x] [Authentik](http://goauthentik.io) - Open Source identity provider.
 
 ---
 
 ## Backup and Restore
 
 No (cluster-wide) backup and restore has been implemented as of yet.
-
-***Note:*** for Home Asisstant backup and restore, see the [corresponding section](#notes-backup-and-restore).
 
 ---
 
