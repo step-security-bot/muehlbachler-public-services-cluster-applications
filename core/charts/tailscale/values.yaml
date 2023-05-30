@@ -15,12 +15,12 @@ app-template:
     - name: TS_AUTHKEY
       valueFrom:
         secretKeyRef:
-          name: tailscale-state
+          name: tailscale-secrets
           key: auth-key
     - name: TS_USERSPACE
       value: "false"
     - name: TS_KUBE_SECRET
-      value: tailscale-secrets
+      value: tailscale-state
     - name: TS_EXTRA_ARGS
       value: "--accept-routes"
 
