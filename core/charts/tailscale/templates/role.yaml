@@ -5,17 +5,11 @@ metadata:
   name: {{ .Values.serviceAccountName }}
 rules:
   - apiGroups: [""]
+    resourceNames: [""]
     resources:
       - secrets
     verbs:
       - create
-  - apiGroups: [""]
-    resourceNames:
-      - tailscale-state
-      - tailscale-secrets
-    resources:
-      - secrets
-    verbs:
       - get
       - update
       - patch
