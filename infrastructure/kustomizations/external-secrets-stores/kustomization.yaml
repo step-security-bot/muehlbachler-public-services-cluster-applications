@@ -8,3 +8,4 @@ resources:
   - ./stores/cert-manager.yml
   - ./stores/email.yml
   - ./stores/external-dns.yml
+  - ./stores/tailscale.yml
