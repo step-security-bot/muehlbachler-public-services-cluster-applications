@@ -21,10 +21,9 @@ app-template:
       value: "false"
     - name: TS_KUBE_SECRET
       value: tailscale-secrets
-  
-  command:
-    - --accept-routes
-  
+    - name: TS_EXTRA_ARGS
+      value: "--accept-routes"
+
   securityContext:
     capabilities:
       add:
