@@ -48,9 +48,3 @@ applications:
     disabled: false
     namespace: tailscale
     helm: true
-    ignoreDifferences:
-      - group: ""
-        kind: Secret
-        name: tailscale-state
-        jsonPointers:
-          - /data
