@@ -27,6 +27,7 @@ app-template:
       value: "--accept-routes"
 
   securityContext:
+    privileged: true
     capabilities:
       add:
         - NET_ADMIN
