@@ -31,8 +31,7 @@ traefik:
 
   service:
     type: ClusterIP
-    # FIXME: external-dns needs to support IPv6 first - https://github.com/kubernetes-sigs/external-dns/pull/2461
-    # ipFamilyPolicy: PreferDualStack
+    ipFamilyPolicy: PreferDualStack
     spec:
       externalIPs: []
 
