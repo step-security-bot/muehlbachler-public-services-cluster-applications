@@ -22,6 +22,9 @@ app-template:
     - name: TS_KUBE_SECRET
       value: tailscale-secrets
   
+  args:
+    - --accept-routes
+  
   securityContext:
     capabilities:
       add:
