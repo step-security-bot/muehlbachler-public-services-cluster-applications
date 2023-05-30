@@ -1,0 +1,43 @@
+---
+serviceAccountName: &service_account_name tailscale
+
+app-template:
+  image:
+    repository: ghcr.io/tailscale/tailscale
+    pullPolicy: IfNotPresent
+    tag: v1.42.0
+
+  serviceAccount:
+    create: true
+    name: *service_account_name
+
+  env:
+    - name: TS_AUTHKEY
+      valueFrom:
+        secretKeyRef:
+          name: tailscale-secrets
+          key: auth-key
+    - name: TS_USERSPACE
+      value: "false"
+    - name: TS_KUBE_SECRET
+      value: tailscale-secrets
+  
+  securityContext:
+    capabilities:
+      add:
+        - NET_ADMIN
+  
+  controller:
+    type: daemonset
+
+  service:
+    main:
+      enabled: false
+
+  resources:
+    requests:
+      cpu: 5m
+      memory: 16Mi
+    limits:
+      cpu: 50m
+      memory: 64Mi

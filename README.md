@@ -68,6 +68,7 @@ The following applications are defined in [`core/charts`](core/charts).
 
 - [x] [cert-manager](https://cert-manager.io) - Certificate management using ACME Let's Encrypt.
 - [x] [External DNS with Google Cloud DNS integration](https://github.com/kubernetes-sigs/external-dns) - Creates DNS records in Google Cloud DNS domains for publicly reachable services.
+- [x] [Tailscale](http://tailscale.com) - Establishes connectivity to on-premises subnets (using `DaemonSet`s).
 - [x] [Traefik](https://traefik.io) - Exposes Kubernetes `Ingress` resources to the "outside world".
 
 ### (User) Applications

@@ -41,3 +41,10 @@ applications:
     namespace: traefik
     helm: true
     syncWave: -100
+  tailscale:
+    project: "core-{{ $.Values.global.projectEnvironment }}"
+    path: core/charts/tailscale
+    releaseName: tailscale
+    disabled: false
+    namespace: tailscale
+    helm: true
