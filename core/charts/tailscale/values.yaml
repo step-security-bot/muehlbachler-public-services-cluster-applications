@@ -15,7 +15,7 @@ app-template:
     - name: TS_AUTHKEY
       valueFrom:
         secretKeyRef:
-          name: tailscale-secrets
+          name: tailscale-state
           key: auth-key
     - name: TS_USERSPACE
       value: "false"
