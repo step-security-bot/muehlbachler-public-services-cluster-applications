@@ -20,7 +20,9 @@ app-template:
     - name: TS_USERSPACE
       value: "false"
     - name: TS_KUBE_SECRET
-      value: tailscale-state
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
     - name: TS_EXTRA_ARGS
       value: "--accept-routes"
 
@@ -31,6 +33,37 @@ app-template:
   
   controller:
     type: daemonset
+
+  initContainers:
+    secret:
+      image: bitnami/kubectl:1.27
+      imagePullPolicy: IfNotPresent
+      command:
+        - /scripts/secret.sh
+      env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+      volumeMounts:
+        - name: scripts
+          mountPath: /scripts
+      resources:
+        requests:
+          cpu: 10m
+          memory: 64Mi
+        limits:
+          cpu: 100m
+          memory: 128Mi
+
+  persistence:
+    scripts:
+      enabled: true
+      type: custom
+      volumeSpec:
+        configMap:
+          name: tailscale-scripts
+          defaultMode: 511
 
   service:
     main:
