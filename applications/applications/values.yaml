@@ -25,3 +25,10 @@ applications:
     namespace: authentik
     helm: true
     syncWave: -500
+  github-actions-runner-controller:
+    project: "applications-{{ $.Values.global.projectEnvironment }}"
+    path: applications/charts/github-actions-runner-controller
+    releaseName: github-actions-runner-controller
+    disabled: false
+    namespace: github-actions-runner-controller
+    helm: true
