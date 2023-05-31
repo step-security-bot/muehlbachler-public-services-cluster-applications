@@ -1,26 +1,3 @@
-{{- range .Values.runners.repositories }}
----
-apiVersion: actions.summerwind.dev/v1alpha1
-kind: HorizontalRunnerAutoscaler
-metadata:
-  name: repository-autoscaler-{{ .repository | replace "/" "--" }}
-spec:
-  scaleTargetRef:
-    kind: RunnerDeployment
-    name: repository-runner-{{ .repository | replace "/" "--" }}
-  minReplicas: {{ default $.Values.runnerConfig.minReplicas .minReplicas }}
-  maxReplicas: {{ default $.Values.runnerConfig.maxReplicas .maxReplicas }}
-  metrics:
-    - type: PercentageRunnersBusy
-      scaleUpThreshold: {{ default $.Values.runnerConfig.scaling.scaleUpThreshold .scaleUpThreshold }}
-      scaleDownThreshold: {{ default $.Values.runnerConfig.scaling.scaleDownThreshold .scaleDownThreshold }}
-      scaleUpAdjustment: {{ default $.Values.runnerConfig.scaling.scaleUpAdjustment .scaleUpAdjustment }}
-      scaleDownAdjustment: {{ default $.Values.runnerConfig.scaling.scaleDownAdjustment .scaleDownAdjustmenta }}
-    - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
-      repositoryNames:
-        - {{ .repository }}
-{{- end }}
-
 {{- range .Values.runners.organizations }}
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
