@@ -1,0 +1,33 @@
+---
+runnerConfig:
+  replicas: 0
+  minReplicas: 0
+  maxReplicas: 5
+  scaling:
+    scaleUpThreshold: '0.75'
+    scaleDownThreshold: '0.25'
+    scaleUpAdjustment: 1
+    scaleDownAdjustment: 1
+runners:
+  repositories:
+    - repository: repo
+      labels:
+        - label
+  organizations:
+    - organization: org
+      repositories:
+        - repo
+      labels:
+        - label
+
+actions-runner-controller:
+  defaultScaleDownDelay: 5m
+
+  authSecret:
+    enabled: true
+    create: false
+    name: actions-runner-controller-auth
+
+  runner:
+    statusUpdateHook:
+      enabled: true
