@@ -47,7 +47,7 @@ argo-cd:
       limits:
         cpu: 50m
         memory: 256Mi
-    
+
   controller:
     resources:
       requests:
@@ -56,7 +56,7 @@ argo-cd:
       limits:
         cpu: 1
         memory: 1024Mi
-    
+
   dex:
     resources:
       requests:

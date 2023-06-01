@@ -4,7 +4,7 @@ traefik:
 
   tolerations:
     - operator: Exists
-  
+
   nodeSelector:
     dc: hetzner
 

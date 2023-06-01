@@ -30,7 +30,7 @@ authentik:
         name: authentik-config
     - secretRef:
         name: authentik-secrets
-  
+
   redis:
     enabled: true
     master:
