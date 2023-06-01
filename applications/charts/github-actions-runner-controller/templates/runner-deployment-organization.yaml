@@ -5,9 +5,9 @@ kind: RunnerDeployment
 metadata:
   name: organization-runner-{{ .organization | replace "/" "--" }}
 spec:
+  replicas: {{ default $.Values.runnerConfig.replicas .replicas }}
   template:
     spec:
-      replicas: {{ default $.Values.runnerConfig.replicas .replicas }}
       organization: {{ .organization }}
     {{- with .labels }}
       labels: {{ . | toYaml |  nindent 8 }}
