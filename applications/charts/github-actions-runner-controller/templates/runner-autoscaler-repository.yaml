@@ -12,8 +12,8 @@ spec:
   maxReplicas: {{ default $.Values.runnerConfig.maxReplicas .maxReplicas }}
   metrics:
     - type: PercentageRunnersBusy
-      scaleUpThreshold: {{ default $.Values.runnerConfig.scaling.scaleUpThreshold .scaleUpThreshold }}
-      scaleDownThreshold: {{ default $.Values.runnerConfig.scaling.scaleDownThreshold .scaleDownThreshold }}
+      scaleUpThreshold: "{{ default $.Values.runnerConfig.scaling.scaleUpThreshold .scaleUpThreshold }}"
+      scaleDownThreshold: "{{ default $.Values.runnerConfig.scaling.scaleDownThreshold .scaleDownThreshold }}"
       scaleUpAdjustment: {{ default $.Values.runnerConfig.scaling.scaleUpAdjustment .scaleUpAdjustment }}
       scaleDownAdjustment: {{ default $.Values.runnerConfig.scaling.scaleDownAdjustment .scaleDownAdjustmenta }}
     - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
