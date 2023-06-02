@@ -9,6 +9,11 @@ spec:
   template:
     spec:
       ephemeral: true
+      containers:
+        - name: docker
+          volumeMounts:
+            - mountPath: /opt/hostedtoolcache
+              name: tool-cache
       volumeMounts:
         - mountPath: /opt/hostedtoolcache
           name: tool-cache
