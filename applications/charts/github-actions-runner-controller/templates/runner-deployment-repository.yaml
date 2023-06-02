@@ -14,7 +14,7 @@ spec:
           name: tool-cache
       volumes:
         - name: tool-cache
-          emptyDir:
+          emptyDir: {}
       repository: {{ .repository }}
     {{- with .labels }}
       labels: {{ . | toYaml |  nindent 8 }}
