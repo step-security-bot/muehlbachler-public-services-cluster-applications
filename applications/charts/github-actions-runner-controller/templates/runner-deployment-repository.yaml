@@ -8,6 +8,13 @@ spec:
   replicas: {{ default $.Values.runnerConfig.replicas .replicas }}
   template:
     spec:
+      ephemeral: true
+      volumeMounts:
+        - mountPath: /opt/hostedtoolcache
+          name: tool-cache
+      volumes:
+        - name: tool-cache
+          emptyDir:
       repository: {{ .repository }}
     {{- with .labels }}
       labels: {{ . | toYaml |  nindent 8 }}
