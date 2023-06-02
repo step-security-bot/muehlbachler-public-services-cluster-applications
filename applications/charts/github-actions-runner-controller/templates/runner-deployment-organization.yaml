@@ -3,7 +3,7 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: RunnerDeployment
 metadata:
-  name: organization-runner-{{ .organization | replace "/" "--" }}
+  name: {{ .organization | replace "/" "--" }}
 spec:
   replicas: {{ default $.Values.runnerConfig.replicas .replicas }}
   template:

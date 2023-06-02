@@ -3,11 +3,11 @@
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
 metadata:
-  name: organization-autoscaler-{{ .organization | replace "/" "--" }}
+  name: {{ .organization | replace "/" "--" }}
 spec:
   scaleTargetRef:
     kind: RunnerDeployment
-    name: organization-runner-{{ .organization | replace "/" "--" }}
+    name: {{ .organization | replace "/" "--" }}
   minReplicas: {{ default $.Values.runnerConfig.minReplicas .minReplicas }}
   maxReplicas: {{ default $.Values.runnerConfig.maxReplicas .maxReplicas }}
   metrics:
