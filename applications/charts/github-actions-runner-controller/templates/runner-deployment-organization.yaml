@@ -12,15 +12,14 @@ spec:
       containers:
         - name: docker
           resources: {}
-          volumeMounts:
-            - mountPath: /opt/hostedtoolcache
-              name: tool-cache
-      volumeMounts:
-        - mountPath: /opt/hostedtoolcache
-          name: tool-cache
-      volumes:
-        - name: tool-cache
-          emptyDir: {}
+          env:
+            - name: RUNNER_TOOL_CACHE
+              value: /runner/_work/hostedtoolcache
+        - name: runner
+          resources: {}
+          env:
+            - name: RUNNER_TOOL_CACHE
+              value: /runner/_work/hostedtoolcache
       organization: {{ .organization }}
     {{- with .labels }}
       labels: {{ . | toYaml |  nindent 8 }}
