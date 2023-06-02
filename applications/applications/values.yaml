@@ -34,3 +34,8 @@ applications:
     helm: true
     syncOptions:
       - ServerSideApply=true
+    ignoreDifferences:
+      - group: actions.summerwind.dev
+        kind: RunnerDeployment
+        jsonPointers:
+          - /spec/replicas
