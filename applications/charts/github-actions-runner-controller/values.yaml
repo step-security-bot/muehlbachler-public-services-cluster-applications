@@ -4,7 +4,7 @@ runnerConfig:
   minReplicas: 0
   maxReplicas: 5
   scaling:
-    scaleUpThreshold: '0.85'
+    scaleUpThreshold: '0.9'
     scaleDownThreshold: '0.30'
     scaleUpAdjustment: 1
     scaleDownAdjustment: 1
