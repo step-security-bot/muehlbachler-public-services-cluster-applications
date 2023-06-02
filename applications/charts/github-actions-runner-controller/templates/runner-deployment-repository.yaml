@@ -13,11 +13,13 @@ spec:
         - name: docker
           resources: {}
           env:
-            RUNNER_TOOL_CACHE: /runner/_work/hostedtoolcache
+            - name: RUNNER_TOOL_CACHE:
+              value: /runner/_work/hostedtoolcache
         - name: runner
           resources: {}
           env:
-            RUNNER_TOOL_CACHE: /runner/_work/hostedtoolcache
+            - name: RUNNER_TOOL_CACHE:
+              value: /runner/_work/hostedtoolcache
       repository: {{ .repository }}
     {{- with .labels }}
       labels: {{ . | toYaml |  nindent 8 }}
