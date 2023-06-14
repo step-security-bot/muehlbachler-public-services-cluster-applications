@@ -165,6 +165,7 @@ argo-cd:
         triggers:
           - on-deployed
           - on-sync-running
+          - on-sync-succeeded
     templates:
       template.app-deployed: |
         email:
@@ -386,6 +387,7 @@ argo-cd:
         - on-sync-failed
         - on-sync-running
         - on-sync-status-unknown
+        - on-sync-succeeded
     resources:
       requests:
         cpu: 5m
