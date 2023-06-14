@@ -4,6 +4,7 @@ generators:
 
 resources:
   - ./stores/aiven.yml
+  - ./stores/argocd.yml
   - ./stores/authentik.yml
   - ./stores/cert-manager.yml
   - ./stores/email.yml
