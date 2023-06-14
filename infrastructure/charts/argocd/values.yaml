@@ -144,13 +144,13 @@ argo-cd:
       create: true
     notifiers:
       service.slack: |
-        token: $slack_token
+        token: $slack-token
       service.email.homelab: |
-        username: $email_username
-        password: $email_password
-        host: $email_host
-        port: $email_port
-        from: $email_from
+        username: $email-username
+        password: $email-password
+        host: $email-host
+        port: $email-port
+        from: $email-from
         html: true
     subscriptions:
       - recipients:
