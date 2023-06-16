@@ -185,10 +185,10 @@ argo-cd:
                 "short": true
               }
               {{range $index, $c := .app.spec.sources}}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
               {{ if eq $index $rIndex }}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -227,10 +227,10 @@ argo-cd:
                 "short": true
               }
               {{range $index, $c := .app.spec.sources}}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
               {{ if eq $index $rIndex }}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -269,10 +269,10 @@ argo-cd:
                 "short": true
               }
               {{range $index, $c := .app.spec.sources}}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
               {{ if eq $index $rIndex }}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -311,10 +311,10 @@ argo-cd:
                 "short": true
               }
               {{range $index, $c := .app.spec.sources}}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
               {{ if eq $index $rIndex }}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -358,10 +358,10 @@ argo-cd:
                 "short": true
               }
               {{range $index, $c := .app.spec.sources}}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
               {{ if eq $index $rIndex }}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -400,10 +400,10 @@ argo-cd:
                 "short": true
               }
               {{range $index, $c := .app.spec.sources}}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
               {{ if eq $index $rIndex }}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
