@@ -406,7 +406,7 @@ argo-cd:
               }
               {{range $index, $c := .app.status.sync.revisions}}
               {{if not $index}},{{end}}
-              {{if $rIndex}},{{end}}
+              {{if $index}},{{end}}
               {
                 "title": "Revision Idx",
                 "value": "{{$index}}-{{$c}}",
