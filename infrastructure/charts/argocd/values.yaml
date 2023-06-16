@@ -188,7 +188,7 @@ argo-cd:
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if $index == $rIndex }}
+              {{ if eq $index $rIndex }}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -230,7 +230,7 @@ argo-cd:
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if $index == $rIndex }}
+              {{ if eq $index $rIndex }}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -272,7 +272,7 @@ argo-cd:
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if $index == $rIndex }}
+              {{ if eq $index $rIndex }}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -314,7 +314,7 @@ argo-cd:
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if $index == $rIndex }}
+              {{ if eq $index $rIndex }}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -361,7 +361,7 @@ argo-cd:
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
               {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if $index == $rIndex }}
+              {{ if eq $index $rIndex }}
               {
                 "title": "Repository (Revision)",
                 "value": "{{$c.repoURL}} ({{$r}})",
@@ -402,11 +402,15 @@ argo-cd:
               {{range $index, $c := .app.spec.sources}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
+              {{range $rIndex, $r := .app.status.sync.revisions}}
+              {{ if eq $index $rIndex }}
               {
                 "title": "Repository (Revision)",
-                "value": "{{$c.repoURL}} ({{.app.status.sync.revisions[$index]}})",
+                "value": "{{$c.repoURL}} ({{$r}})",
                 "short": true
               }
+              {{end}}
+              {{end}}
               {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
