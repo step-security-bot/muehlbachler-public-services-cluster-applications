@@ -399,7 +399,6 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
-              {{end}}
               {{range $index, $c := .app.spec.sources}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
