@@ -183,20 +183,12 @@ argo-cd:
                 "title": "Sync Status",
                 "value": "{{.app.status.sync.status}}",
                 "short": true
-              }
-              {{range $index, $c := .app.spec.sources}}
-              {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if eq $index $rIndex }}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
+              },
               {
-                "title": "Repository (Revision)",
-                "value": "{{$c.repoURL}} ({{$r}})",
+                "title": "Revisions",
+                "value": "{{.app.status.sync.revisions}}",
                 "short": true
               }
-              {{end}}
-              {{end}}
-              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -225,20 +217,12 @@ argo-cd:
                 "title": "Sync Status",
                 "value": "{{.app.status.sync.status}}",
                 "short": true
-              }
-              {{range $index, $c := .app.spec.sources}}
-              {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if eq $index $rIndex }}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
+              },
               {
-                "title": "Repository (Revision)",
-                "value": "{{$c.repoURL}} ({{$r}})",
+                "title": "Revisions",
+                "value": "{{.app.status.sync.revisions}}",
                 "short": true
               }
-              {{end}}
-              {{end}}
-              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -267,20 +251,12 @@ argo-cd:
                 "title": "Sync Status",
                 "value": "{{.app.status.sync.status}}",
                 "short": true
-              }
-              {{range $index, $c := .app.spec.sources}}
-              {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if eq $index $rIndex }}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
+              },
               {
-                "title": "Repository (Revision)",
-                "value": "{{$c.repoURL}} ({{$r}})",
+                "title": "Revisions",
+                "value": "{{.app.status.sync.revisions}}",
                 "short": true
               }
-              {{end}}
-              {{end}}
-              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -308,6 +284,11 @@ argo-cd:
               {
                 "title": "Sync Status",
                 "value": "{{.app.status.sync.status}}",
+                "short": true
+              },
+              {
+                "title": "Revisions",
+                "value": "{{.app.status.sync.revisions}}",
                 "short": true
               }
               {{range $index, $c := .app.status.conditions}}
@@ -342,6 +323,11 @@ argo-cd:
               {
                 "title": "Sync Status",
                 "value": "{{.app.status.sync.status}}",
+                "short": true
+              },
+              {
+                "title": "Revisions",
+                "value": "{{.app.status.sync.revisions}}",
                 "short": true
               }
               {{range $index, $c := .app.status.conditions}}
