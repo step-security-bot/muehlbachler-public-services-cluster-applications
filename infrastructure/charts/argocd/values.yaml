@@ -398,10 +398,13 @@ argo-cd:
                 "title": "Sync Status",
                 "value": "{{.app.status.sync.status}}",
                 "short": true
-              },
+              }
+              {{range $index, $c := .app.spec.sources}}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
               {
-                "title": "Sync Revisions",
-                "value": "{{.app.status.sync.revisions}}",
+                "title": "Repository Idx",
+                "value": "{{$index}}",
                 "short": true
               }
               {{range $rIndex, $r := .app.status.sync.revisions}}
@@ -413,14 +416,6 @@ argo-cd:
                 "short": true
               }
               {{end}}
-              {{range $index, $c := .app.spec.sources}}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
-              {
-                "title": "Repository Idx",
-                "value": "{{$index}}",
-                "short": true
-              }
               {{range $rIndex, $r := .app.status.sync.revisions}}
               {{if not $rIndex}},{{end}}
               {{if $rIndex}},{{end}}
