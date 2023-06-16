@@ -307,22 +307,9 @@ argo-cd:
               "fields": [
               {
                 "title": "Sync Status",
-                "value": "{{.app.status.sync.status}}",
+                "value": "{{.app.status.sync.status}} {{ .app.status.sync.revisions }} {{ len .app.status.sync.revisions }}",
                 "short": true
               }
-              {{range $index, $c := .app.spec.sources}}
-              {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if eq $index $rIndex }}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
-              {
-                "title": "Repository (Revision)",
-                "value": "{{$c.repoURL}} ({{$r}})",
-                "short": true
-              }
-              {{end}}
-              {{end}}
-              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -357,19 +344,6 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
-              {{range $index, $c := .app.spec.sources}}
-              {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{ if eq $index $rIndex }}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
-              {
-                "title": "Repository (Revision)",
-                "value": "{{$c.repoURL}} ({{$r}})",
-                "short": true
-              }
-              {{end}}
-              {{end}}
-              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -404,7 +378,7 @@ argo-cd:
               {{if $index}},{{end}}
               {
                 "title": "Repository (Revision)",
-                "value": "{{$c.repoURL}} ({{if gt (len .app.status.sync.revisions) $index}}{{index .app.status.sync.revisions $index}}{{else}}N/A{{end}})",
+                "value": "{{$c.repoURL}} ({{if (gt (len .app.status.sync.revisions) $index)}}{{index .app.status.sync.revisions $index}}{{else}}N/A{{end}})",
                 "short": true
               }
               {{end}}
