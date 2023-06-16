@@ -400,7 +400,21 @@ argo-cd:
                 "short": true
               }
               {{range $index, $c := .app.spec.sources}}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
+              {
+                "title": "Repository Idx",
+                "value": "{{$index}}",
+                "short": true
+              }
               {{range $rIndex, $r := .app.status.sync.revisions}}
+              {{if not $rIndex}},{{end}}
+              {{if $rIndex}},{{end}}
+              {
+                "title": "Revision Idx",
+                "value": "{{$rIndex}}",
+                "short": true
+              }
               {{ if eq $index $rIndex }}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
