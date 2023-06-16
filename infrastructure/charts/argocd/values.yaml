@@ -412,7 +412,7 @@ argo-cd:
               {{if $rIndex}},{{end}}
               {
                 "title": "Revision Idx",
-                "value": "{{$Rindex}}-{{$r}}",
+                "value": "{{$rIndex}}-{{$r}}",
                 "short": true
               }
               {{end}}
