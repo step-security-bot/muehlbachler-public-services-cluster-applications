@@ -399,50 +399,15 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
-              {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{if not $rIndex}},{{end}}
-              {{if $rIndex}},{{end}}
-              {
-                "title": "Revision Idx",
-                "value": "{{$rIndex}}-{{$r}}",
-                "short": true
-              }
               {{end}}
               {{range $index, $c := .app.spec.sources}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
               {
-                "title": "Repository Idx",
-                "value": "{{$index}}",
-                "short": true
-              }
-              {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{if not $rIndex}},{{end}}
-              {{if $rIndex}},{{end}}
-              {
-                "title": "Revision Idx",
-                "value": "{{$rIndex}}-{{$r}}",
-                "short": true
-              }
-              {{end}}
-              {{range $rIndex, $r := .app.status.sync.revisions}}
-              {{if not $rIndex}},{{end}}
-              {{if $rIndex}},{{end}}
-              {
-                "title": "Revision Idx",
-                "value": "{{$rIndex}}",
-                "short": true
-              }
-              {{ if eq $index $rIndex }}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
-              {
                 "title": "Repository (Revision)",
-                "value": "{{$c.repoURL}} ({{$r}})",
+                "value": "{{$c.repoURL}} ({{if gt (len .app.status.sync.revisions) $index}}{{index .app.status.sync.revisions $index}}{{else}}N/A{{end}})",
                 "short": true
               }
-              {{end}}
-              {{end}}
               {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
