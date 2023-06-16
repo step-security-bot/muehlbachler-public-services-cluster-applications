@@ -399,6 +399,16 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
+              {{range $rIndex, $r := .app.status.sync.revisions}}
+              {{if not $rIndex}},{{end}}
+              {{if $rIndex}},{{end}}
+              {
+                "title": "Revision Idx",
+                "value": "{{$rIndex}}-{{$r}}",
+                "short": true
+              }
+              {{end}}
+              {{range $
               {{range $index, $c := .app.spec.sources}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
