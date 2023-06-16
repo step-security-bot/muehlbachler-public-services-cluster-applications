@@ -155,7 +155,7 @@ argo-cd:
     subscriptions:
       - recipients:
           - slack:channel
-          - email:email@domain.org
+          - homelab:email@domain.org
         triggers:
           - on-health-degraded
           - on-sync-failed
@@ -184,6 +184,15 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
+              {{range $index, $c := .app.spec.sources}}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
+              {
+                "title": "Repository (Revision)",
+                "value": "{{$c.repoURL}} ({{.app.status.sync.revisions[$index]}})",
+                "short": true
+              }
+              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -213,6 +222,15 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
+              {{range $index, $c := .app.spec.sources}}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
+              {
+                "title": "Repository (Revision)",
+                "value": "{{$c.repoURL}} ({{.app.status.sync.revisions[$index]}})",
+                "short": true
+              }
+              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -242,6 +260,15 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
+              {{range $index, $c := .app.spec.sources}}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
+              {
+                "title": "Repository (Revision)",
+                "value": "{{$c.repoURL}} ({{.app.status.sync.revisions[$index]}})",
+                "short": true
+              }
+              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -271,6 +298,15 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
+              {{range $index, $c := .app.spec.sources}}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
+              {
+                "title": "Repository (Revision)",
+                "value": "{{$c.repoURL}} ({{.app.status.sync.revisions[$index]}})",
+                "short": true
+              }
+              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -305,6 +341,15 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
+              {{range $index, $c := .app.spec.sources}}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
+              {
+                "title": "Repository (Revision)",
+                "value": "{{$c.repoURL}} ({{.app.status.sync.revisions[$index]}})",
+                "short": true
+              }
+              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -334,6 +379,15 @@ argo-cd:
                 "value": "{{.app.status.sync.status}}",
                 "short": true
               }
+              {{range $index, $c := .app.spec.sources}}
+              {{if not $index}},{{end}}
+              {{if $index}},{{end}}
+              {
+                "title": "Repository (Revision)",
+                "value": "{{$c.repoURL}} ({{.app.status.sync.revisions[$index]}})",
+                "short": true
+              }
+              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
@@ -348,7 +402,7 @@ argo-cd:
     triggers:
       trigger.on-deployed: |
         - description: Application is synced and healthy. Triggered once per commit.
-          oncePer: app.status.sync.revision
+          oncePer: app.status.sync.revisions
           send:
           - app-deployed
           when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
