@@ -372,21 +372,12 @@ argo-cd:
                 "title": "Sync Status",
                 "value": "{{.app.status.sync.status}}",
                 "short": true
-              }
-              {{$noOfRevisions := len .app.status.sync.revisions}}
-              {{range $index, $c := .app.spec.sources}}
-              {{$revision := "N/A"}}
-              {{if gt $noOfRevisions $index}}
-              {{$revision = index .app.status.sync.revisions $index}}
-              {{end}}
-              {{if not $index}},{{end}}
-              {{if $index}},{{end}}
+              },
               {
-                "title": "Repository (Revision)",
-                "value": "{{$c.repoURL}} ({{$revision}})",
+                "title": "Revisions",
+                "value": "{{.app.status.sync.revisions}}",
                 "short": true
               }
-              {{end}}
               {{range $index, $c := .app.status.conditions}}
               {{if not $index}},{{end}}
               {{if $index}},{{end}}
