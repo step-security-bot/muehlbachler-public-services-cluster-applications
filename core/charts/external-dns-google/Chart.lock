@@ -1,6 +1,6 @@
 dependencies:
 - name: external-dns
   repository: oci://registry-1.docker.io/bitnamicharts
-  version: 6.24.0
-digest: sha256:077d3d50bae4e637b9f4a1cddcd233d66d8517afeccd42af5dd41878ec5e0a98
-generated: "2023-08-23T09:24:12.800957815Z"
+  version: 6.24.1
+digest: sha256:c3f953c12d91f7c77d6aaa824a5e1ced267f95a5a483e432d6aeff9f7b957944
+generated: "2023-08-23T12:29:30.939086697Z"
