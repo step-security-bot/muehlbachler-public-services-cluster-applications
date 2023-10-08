@@ -38,7 +38,7 @@ app-template:
 
   initContainers:
     secret:
-      image: bitnami/kubectl:1.27
+      image: bitnami/kubectl:1.28
       imagePullPolicy: IfNotPresent
       command:
         - /scripts/secret.sh
