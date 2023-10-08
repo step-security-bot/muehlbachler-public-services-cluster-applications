@@ -2,79 +2,82 @@
 serviceAccountName: &service_account_name tailscale
 
 app-template:
-  image:
-    repository: ghcr.io/tailscale/tailscale
-    pullPolicy: IfNotPresent
-    tag: v1.50.1
+  controllers:
+    main:
+      type: daemonset
+      containers:
+        main:
+          image:
+            repository: ghcr.io/tailscale/tailscale
+            tag: v1.50.1
+            pullPolicy: IfNotPresent
+
+          env:
+            - name: TS_AUTHKEY
+              valueFrom:
+                secretKeyRef:
+                  name: tailscale-secrets
+                  key: auth-key
+            - name: TS_USERSPACE
+              value: "false"
+            - name: TS_KUBE_SECRET
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: TS_EXTRA_ARGS
+              value: "--accept-routes"
+
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+
+          resources:
+            requests:
+              cpu: 5m
+              memory: 16Mi
+            limits:
+              cpu: 50m
+              memory: 64Mi
+
+      initContainers:
+        secret:
+          image:
+            repository: bitnami/kubectl
+            tag: 1.28
+            pullPolicy: IfNotPresent
+          command:
+            - /scripts/secret.sh
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+          resources:
+            requests:
+              cpu: 10m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+
+  defaultPodOptions:
+    hostNetwork: true
 
   serviceAccount:
     create: true
     name: *service_account_name
 
-  env:
-    - name: TS_AUTHKEY
-      valueFrom:
-        secretKeyRef:
-          name: tailscale-secrets
-          key: auth-key
-    - name: TS_USERSPACE
-      value: "false"
-    - name: TS_KUBE_SECRET
-      valueFrom:
-        fieldRef:
-          fieldPath: spec.nodeName
-    - name: TS_EXTRA_ARGS
-      value: "--accept-routes"
-
-  securityContext:
-    capabilities:
-      add:
-        - NET_ADMIN
-
-  controller:
-    type: daemonset
-
-  hostNetwork: true
-
-  initContainers:
-    secret:
-      image: bitnami/kubectl:1.28
-      imagePullPolicy: IfNotPresent
-      command:
-        - /scripts/secret.sh
-      env:
-        - name: NODE_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: spec.nodeName
-      volumeMounts:
-        - name: scripts
-          mountPath: /scripts
-      resources:
-        requests:
-          cpu: 10m
-          memory: 64Mi
-        limits:
-          cpu: 100m
-          memory: 128Mi
-
   persistence:
     scripts:
       enabled: true
-      type: custom
-      volumeSpec:
-        configMap:
-          name: tailscale-scripts
-          defaultMode: 511
+      type: configMap
+      name: tailscale-scripts
+      defaultMode: 511
 
   service:
     main:
       enabled: false
-
-  resources:
-    requests:
-      cpu: 5m
-      memory: 16Mi
-    limits:
-      cpu: 50m
-      memory: 64Mi
