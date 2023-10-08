@@ -53,9 +53,6 @@ app-template:
               valueFrom:
                 fieldRef:
                   fieldPath: spec.nodeName
-          volumeMounts:
-            - name: scripts
-              mountPath: /scripts
           resources:
             requests:
               cpu: 10m
