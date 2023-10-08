@@ -17,3 +17,4 @@ chart-repos: # we need to add all repos which are not OCI ones
   - cilium=https://helm.cilium.io/
   - descheduler=https://kubernetes-sigs.github.io/descheduler
   - external-secrets=https://charts.external-secrets.io
+  - bitnami=https://charts.bitnami.com/bitnami
