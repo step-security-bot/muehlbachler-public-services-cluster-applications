@@ -3,7 +3,6 @@ generators:
   - ./secret-generator.yml
 
 resources:
-  - ./stores/aiven.yml
   - ./stores/argocd.yml
   - ./stores/authentik.yml
   - ./stores/cert-manager.yml
