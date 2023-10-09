@@ -7,6 +7,7 @@ resources:
   - ./stores/argocd.yml
   - ./stores/authentik.yml
   - ./stores/cert-manager.yml
+  - ./stores/database.yml
   - ./stores/email.yml
   - ./stores/external-dns.yml
   - ./stores/github.yml
