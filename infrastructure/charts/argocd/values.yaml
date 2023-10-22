@@ -84,22 +84,15 @@ argo-cd:
         memory: 256Mi
 
   repoServer:
+    serviceAccount:
+      create: false
+      name: argocd
     env:
       - name: XDG_CONFIG_HOME
         value: /.config
-      - name: GOOGLE_APPLICATION_CREDENTIALS
-        value: /ksops-credentials/credentials.json
-      - name: GOOGLE_CREDENTIALS
-        valueFrom:
-          secretKeyRef:
-            name: ksops-credentials
-            key: credentials.json
     volumes:
       - name: custom-tools
         emptyDir: {}
-      - name: ksops-credentials
-        secret:
-          secretName: ksops-credentials
     initContainers:
       - name: install-ksops
         image: viaductoss/ksops:v4
@@ -122,9 +115,6 @@ argo-cd:
       - mountPath: /usr/local/bin/ksops
         name: custom-tools
         subPath: ksops
-      - mountPath: /ksops-credentials
-        readOnly: true
-        name: ksops-credentials
 
     resources:
       requests:

@@ -11,8 +11,9 @@ acme:
 cert-manager:
   installCRDs: true
 
-  tolerations:
-    - operator: Exists
+  serviceAccount:
+    create: false
+    name: cert-manager
 
   extraArgs:
     - "--dns01-recursive-nameservers-only"

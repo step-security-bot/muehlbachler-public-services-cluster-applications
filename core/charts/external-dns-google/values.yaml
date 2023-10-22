@@ -5,8 +5,9 @@ external-dns:
     repository: external-dns/external-dns
     tag: v0.13.6
 
-  tolerations:
-    - operator: Exists
+  serviceAccount:
+    create: false
+    name: external-dns
 
   sources:
     - service
@@ -23,8 +24,7 @@ external-dns:
   txtOwnerId: external-dns-public-cluster-dev-google # FIXME: naming
   provider: google
   google:
-    serviceAccountSecret: external-dns-google
-    project: tuxnet-385112 # FIXME: cross-project
+    project: tuxnet-385112 # FIXME: project
 
   resources:
     requests:
