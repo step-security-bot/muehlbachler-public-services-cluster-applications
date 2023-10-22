@@ -1,10 +1,24 @@
 ---
+domain: &domain sso.dev.home.muehlbachler.io # FIXME: domain
+
 ldap:
-  domain: ldap.domain.org
+  domain: *domain
 
 authentik:
   ingress:
     enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: cluster-issuer-home-muehlbachler-io # FIXME: domains
+      external-dns.alpha.kubernetes.io/provider: public
+    hosts:
+      - host: *domain
+        paths:
+          - path: "/"
+            pathType: Prefix
+    tls:
+      - secretName: authentik-tls-cert
+        hosts:
+          - *domain
 
   authentik:
     email:

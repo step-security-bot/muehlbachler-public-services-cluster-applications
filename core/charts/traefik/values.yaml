@@ -2,27 +2,34 @@
 traefik:
   fullnameOverride: traefik
 
-  tolerations:
-    - operator: Exists
-
-  nodeSelector:
-    dc: hetzner
-
   providers:
+    kubernetesCRD:
+      allowExternalNameServices: true
+      allowEmptyServices: true
     kubernetesIngress:
+      allowExternalNameServices: true
+      allowEmptyServices: true
       publishedService:
-        enabled: true
+        enabled: false
 
   additionalArguments:
     - "--serversTransport.insecureSkipVerify=true"
-    - "--providers.kubernetesingress.allowexternalnameservices=true"
-    - "--providers.kubernetesingress.allowEmptyServices=true"
+    - "--providers.kubernetesingress.ingressendpoint.ip=10.200.200.1"
 
   ports:
     traefik:
       expose: false
     web:
       redirectTo: websecure
+      proxyProtocol:
+        insecure: true
+        trustedIPs:
+          - 10.0.0.0/8
+    websecure:
+      proxyProtocol:
+        insecure: true
+        trustedIPs:
+          - 10.0.0.0/8
     ldaps:
       port: 8636
       expose: true
@@ -31,9 +38,11 @@ traefik:
 
   service:
     type: ClusterIP
-    ipFamilyPolicy: PreferDualStack
+    #ipFamilyPolicy: PreferDualStack
+    externalIPs:
+      - 10.200.200.1
     spec:
-      externalIPs: []
+      clusterIP: None
 
   resources:
     requests:

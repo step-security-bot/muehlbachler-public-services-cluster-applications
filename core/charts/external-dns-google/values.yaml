@@ -16,10 +16,15 @@ external-dns:
 
   logLevel: error
 
-  txtOwnerId: external-dns-public-cluster-dev-google
+  domainFilters: # FIXME: domains
+    - home.muehlbachler.io
+  annotationFilter: external-dns.alpha.kubernetes.io/provider=public
+
+  txtOwnerId: external-dns-public-cluster-dev-google # FIXME: naming
   provider: google
   google:
     serviceAccountSecret: external-dns-google
+    project: tuxnet-385112 # FIXME: cross-project
 
   resources:
     requests:

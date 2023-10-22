@@ -1,8 +1,12 @@
 ---
-zones: {}
+tuxnetProject: &tuxnet_project tuxnet-385112 # FIXME: cross-project
+
+zones: # FIXME: domains
+  home.muehlbachler.io:
+    project: *tuxnet_project
 
 acme:
-  email: "email@domain.org"
+  email: "noreply@muehlbachler.xyz"
 
 cert-manager:
   installCRDs: true

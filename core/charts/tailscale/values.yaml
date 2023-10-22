@@ -1,4 +1,7 @@
 ---
+# TODO: TS_AUTH_KEY
+# this key expires *in* 90 days! => add key rotation
+
 serviceAccountName: &service_account_name tailscale
 
 app-template:

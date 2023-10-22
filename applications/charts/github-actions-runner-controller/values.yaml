@@ -1,4 +1,9 @@
 ---
+labels: &labels
+  - tuxnet
+  - vpn
+  - dev
+
 runnerConfig:
   replicas: 0
   minReplicas: 0
@@ -9,16 +14,8 @@ runnerConfig:
     scaleUpAdjustment: 1
     scaleDownAdjustment: 1
 runners:
-  repositories:
-    - repository: repo
-      labels:
-        - label
-  organizations:
-    - organization: org
-      repositories:
-        - repo
-      labels:
-        - label
+  repositories: []
+  organizations: []
 
 actions-runner-controller:
   defaultScaleDownDelay: 5m

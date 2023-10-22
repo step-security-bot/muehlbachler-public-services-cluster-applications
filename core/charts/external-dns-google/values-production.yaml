@@ -1,0 +1,5 @@
+---
+external-dns:
+  txtOwnerId: external-dns-public-cluster-prod-google # FIXME: naming
+
+  interval: 2m

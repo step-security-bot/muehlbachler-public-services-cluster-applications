@@ -6,7 +6,7 @@ global:
       repoURL: https://github.com/muhlba91/homelab-kubernetes-public-applications.git
       targetRevision: HEAD
     values:
-      repoURL: git@github.com:muhlba91/homelab-kubernetes-public-values.git
+      repoURL: https://github.com/muhlba91/homelab-kubernetes-public-applications.git
       targetRevision: HEAD
     syncWave: 0
     helm:
@@ -30,14 +30,6 @@ applications:
         kind: "*"
         managedFieldsManagers:
           - externalsecrets.external-secrets.io/argocd-notifications-secret
-  cilium:
-    project: "infrastructure-{{ $.Values.global.projectEnvironment }}"
-    path: infrastructure/charts/cilium
-    releaseName: cilium
-    disabled: false
-    namespace: cilium
-    helm: true
-    syncWave: -1000
   external-secrets:
     project: "infrastructure-{{ $.Values.global.projectEnvironment }}"
     path: infrastructure/charts/external-secrets
@@ -54,10 +46,3 @@ applications:
     namespace: external-secrets
     helm: false
     syncWave: -500
-  descheduler:
-    project: "infrastructure-{{ $.Values.global.projectEnvironment }}"
-    path: infrastructure/charts/descheduler
-    releaseName: descheduler
-    disabled: false
-    namespace: descheduler
-    helm: true
