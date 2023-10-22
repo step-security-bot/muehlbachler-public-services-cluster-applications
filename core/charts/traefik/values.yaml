@@ -38,7 +38,7 @@ traefik:
 
   service:
     type: ClusterIP
-    #ipFamilyPolicy: PreferDualStack
+    # ipFamilyPolicy: PreferDualStack
     externalIPs:
       - 10.200.200.1
     spec:
