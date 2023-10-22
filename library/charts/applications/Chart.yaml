@@ -6,9 +6,9 @@ description: ArgoCD Applications
 version: 1.0.0
 
 type: application
-home: https://github.com/muhlba91/homelab-kubernetes-public-applications.git
+home: https://github.com/muhlba91/muehlbachler-public-services-cluster-applications.git
 sources:
-  - https://github.com/muhlba91/homelab-kubernetes-public-applications.git
+  - https://github.com/muhlba91/muehlbachler-public-services-cluster-applications.git
 
 maintainers:
   - name: Daniel Muehlbachler-Pietrzykowski

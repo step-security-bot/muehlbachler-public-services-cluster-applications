@@ -1,19 +1,19 @@
-# Homelab: Kubernetes Public Cluster - Applications
+# Personal Public Services - Applications
 
-[![Build status](https://img.shields.io/github/actions/workflow/status/muhlba91/homelab-kubernetes-public-applications/pipeline.yml?style=for-the-badge)](https://github.com/muhlba91/homelab-kubernetes-public-applications/actions/workflows/pipeline.yml)
-[![License](https://img.shields.io/github/license/muhlba91/homelab-kubernetes-public-applications?style=for-the-badge)](LICENSE.md)
+[![Build status](https://img.shields.io/github/actions/workflow/status/muhlba91/muehlbachler-public-services-cluster-applications/pipeline.yml?style=for-the-badge)](https://github.com/muhlba91/muehlbachler-public-services-cluster-applications/actions/workflows/pipeline.yml)
+[![License](https://img.shields.io/github/license/muhlba91/muehlbachler-public-services-cluster-applications?style=for-the-badge)](LICENSE.md)
 
-This repository contains applications deployed on the `public-cluster` via [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) using [GitOps](https://opengitops.dev).
+This repository contains applications deployed on the `public-services-cluster` via [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) using [GitOps](https://opengitops.dev).
 
 ---
 
 ## Bootstrapping
 
-A Kubernetes cluster needs to be bootstrapped with the [Cilium CNI](https://cilium.io) and ArgoCD with an `Application` pointing to this repository.
+The Kubernetes cluster needs to be bootstrapped with ArgoCD with an `Application` pointing to this repository.
 
-For [ksops](https://github.com/viaduct-ai/kustomize-sops) and ArgoCD to decrypt the initial secrets for configuring the [External Secrets Operator](http://external-secrets.io) using [Doppler](http://doppler.com), a [Google Cloud Service Account](https://cloud.google.com/docs/authentication#service-accounts) with access to the correct KMS key needs to be set in the `argocd` namespace. You can check out [`infrastructure/charts/argocd/values.yaml`](infrastructure/charts/argocd/values.yaml) on how this secret is passed to ArgoCD.
+For [ksops](https://github.com/viaduct-ai/kustomize-sops) and ArgoCD to decrypt the initial secrets for configuring the [External Secrets Operator](http://external-secrets.io) using [Doppler](http://doppler.com), a [Google Cloud Service Account](https://cloud.google.com/docs/authentication#service-accounts) with access to the correct KMS key needs to be set in the `argocd` namespace.
 
-ArgoCD will then manage Cilium, itself, and all applications as defined in this repository.
+ArgoCD will then manage itself and all applications as defined in this repository.
 
 ***Attention:*** some applications will be automatically deployed, others not (yet).
 
@@ -54,8 +54,6 @@ To support bootstrapping these app-of-apps `Application`s, the library chart [ap
 The following applications are defined in [`infrastructure/charts`](infrastructure/charts).
 
 - [x] [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) - Manages the applications deployed on the cluster using GitOps.
-- [x] [Cilium](https://cilium.io) - Provides the cluster CNI.
-- [x] [Descheduler](https://github.com/kubernetes-sigs/descheduler) - Finds pods to be evicted for optimizing node usage.
 - [x] [External Secrets Operator](http://external-secrets.io) - Synchronizes secrets from external stores to Kubernetes `Secret` objects.
 
 #### Kustomizations
@@ -76,6 +74,7 @@ The following applications are defined in [`core/charts`](core/charts).
 The following applications are defined in [`applications/charts`](applications/charts).
 
 - [x] [Authentik](http://goauthentik.io) - Open Source identity provider.
+- [x] [GitHub Actions Runner Controller](https://github.com/actions/actions-runner-controller) - Kubernetes operator to start GitHub Actions runners.
 
 ---
 
