@@ -45,8 +45,31 @@ authentik:
     - secretRef:
         name: authentik-secrets
 
+  resources:
+    server:
+      requests:
+        cpu: 5m
+        memory: 640Mi
+      limits:
+        cpu: 1
+        memory: 1Gi
+    worker:
+      requests:
+        cpu: 5m
+        memory: 272Mi
+      limits:
+        cpu: 1
+        memory: 368Mi
+
   redis:
     enabled: true
     master:
       persistence:
         enabled: false
+      resources:
+        requests:
+          cpu: 5m
+          memory: 50Mi
+        limits:
+          cpu: 50m
+          memory: 96Mi

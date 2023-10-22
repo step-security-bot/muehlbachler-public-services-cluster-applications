@@ -9,6 +9,12 @@ spec:
   template:
     spec:
       ephemeral: true
+    {{- with .nodeSelector }}
+      nodeSelector: {{ . | toYaml |  nindent 8 }}
+    {{- end }}
+    {{- with .tolerations }}
+      tolerations: {{ . | toYaml |  nindent 8 }}
+    {{- end }}
       containers:
         - name: docker
           resources: {}
@@ -21,6 +27,9 @@ spec:
             - name: RUNNER_TOOL_CACHE
               value: /runner/_work/hostedtoolcache
       organization: {{ .organization }}
+    {{- with .resources }}
+      resources: {{ . | toYaml |  nindent 8 }}
+    {{- end }}
     {{- with .labels }}
       labels: {{ . | toYaml |  nindent 8 }}
     {{- end }}

@@ -48,20 +48,20 @@ argo-cd:
 
     resources:
       requests:
-        cpu: 10m
-        memory: 128Mi
+        cpu: 5m
+        memory: 75Mi
       limits:
         cpu: 50m
-        memory: 256Mi
+        memory: 96Mi
 
   controller:
     resources:
       requests:
-        cpu: 250m
-        memory: 512Mi
+        cpu: 10m
+        memory: 416Mi
       limits:
         cpu: 1
-        memory: 1024Mi
+        memory: 512Mi
 
   dex:
     resources:
@@ -78,10 +78,10 @@ argo-cd:
     resources:
       requests:
         cpu: 5m
-        memory: 196Mi
+        memory: 24Mi
       limits:
-        cpu: 100m
-        memory: 256Mi
+        cpu: 50m
+        memory: 48Mi
 
   repoServer:
     serviceAccount:
@@ -118,17 +118,17 @@ argo-cd:
 
     resources:
       requests:
-        cpu: 10m
-        memory: 416Mi
+        cpu: 5m
+        memory: 150Mi
       limits:
         cpu: 1
-        memory: 768Mi
+        memory: 192Mi
 
   applicationSet:
     resources:
       requests:
         cpu: 5m
-        memory: 64Mi
+        memory: 60Mi
       limits:
         cpu: 50m
         memory: 96Mi
@@ -421,4 +421,4 @@ argo-cd:
         memory: 56Mi
       limits:
         cpu: 50m
-        memory: 64Mi
+        memory: 75Mi

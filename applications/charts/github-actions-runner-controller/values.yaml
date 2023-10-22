@@ -28,3 +28,11 @@ actions-runner-controller:
   runner:
     statusUpdateHook:
       enabled: true
+
+  resources:
+    requests:
+      cpu: 5m
+      memory: 32Mi
+    limits:
+      cpu: 50m
+      memory: 64Mi

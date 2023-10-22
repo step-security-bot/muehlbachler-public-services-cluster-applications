@@ -23,7 +23,7 @@ cert-manager:
     resources:
       requests:
         cpu: 5m
-        memory: 40Mi
+        memory: 35Mi
       limits:
         cpu: 50m
         memory: 56Mi
@@ -31,16 +31,16 @@ cert-manager:
   cainjector:
     resources:
       requests:
-        cpu: 10m
-        memory: 136Mi
+        cpu: 5m
+        memory: 64Mi
       limits:
         cpu: 100m
-        memory: 192Mi
+        memory: 96Mi
 
   resources:
     requests:
       cpu: 5m
-      memory: 96Mi
+      memory: 64Mi
     limits:
-      cpu: 50m
-      memory: 128Mi
+      cpu: 100m
+      memory: 96Mi
