@@ -2,8 +2,8 @@
 traefik:
   additionalArguments:
     - "--serversTransport.insecureSkipVerify=true"
-    - "--providers.kubernetesingress.ingressendpoint.ip=34.141.224.78" # FIXME: public ip
+    - "--providers.kubernetesingress.ingressendpoint.ip=35.214.252.245"
 
   service:
     externalIPs:
-      - 34.141.224.78 # FIXME: public ip
+      - 35.214.252.245
