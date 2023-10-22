@@ -1,6 +1,6 @@
 ---
-domain: &domain argocd.hetzner.home.muehlbachler.io # FIXME: url
-url: &url https://argocd.hetzner.home.muehlbachler.io # FIXME: url
+domain: &domain argocd.public.muehlbachler.io
+url: &url https://argocd.public.muehlbachler.io
 
 argo-cd:
   fullnameOverride: argocd-prod
@@ -31,12 +31,12 @@ argo-cd:
         html: true
     subscriptions:
       - recipients:
-          - slack:announcements-public-cluster
+          - slack:announcements-public-services-cluster
         triggers:
           - on-health-degraded
           - on-sync-failed
       - recipients:
-          - slack:announcements-public-cluster
+          - slack:announcements-public-services-cluster
         triggers:
           - on-deployed
           - on-sync-running

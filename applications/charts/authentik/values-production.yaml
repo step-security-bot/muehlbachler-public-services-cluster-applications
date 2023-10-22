@@ -1,5 +1,5 @@
 ---
-domain: &domain sso.home.muehlbachler.io # FIXME: domain
+domain: &domain sso.muehlbachler.io
 
 ldap:
   domain: *domain

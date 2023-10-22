@@ -17,14 +17,14 @@ external-dns:
 
   logLevel: error
 
-  domainFilters: # FIXME: domains
-    - home.muehlbachler.io
+  domainFilters:
+    - muehlbachler.io
   annotationFilter: external-dns.alpha.kubernetes.io/provider=public
 
-  txtOwnerId: external-dns-public-cluster-dev-google # FIXME: naming
+  txtOwnerId: external-dns-public-services-cluster-dev-google
   provider: google
   google:
-    project: tuxnet-385112 # FIXME: project
+    project: muehlbachler-dns
 
   resources:
     requests:

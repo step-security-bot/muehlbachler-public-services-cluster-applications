@@ -12,10 +12,8 @@ runners:
       labels: *labels
     - repository: muhlba91/homelab-kubernetes-home-infrastructure
       labels: *labels
-    - repository: muhlba91/homelab-kubernetes-public-infrastructure
-      labels: *labels
     - repository: muhlba91/homelab-buildkite-agents-home-infrastructure
       labels: *labels
   organizations: []
 
-# FIXME: runner pinning
+# FIXME: runner pinning & resources

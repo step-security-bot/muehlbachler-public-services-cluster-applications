@@ -1,8 +1,8 @@
 ---
-tuxnetProject: &tuxnet_project tuxnet-385112 # FIXME: cross-project
+tuxnetProject: &tuxnet_project muehlbachler-dns
 
-zones: # FIXME: domains
-  home.muehlbachler.io:
+zones:
+  muehlbachler.io:
     project: *tuxnet_project
 
 acme:

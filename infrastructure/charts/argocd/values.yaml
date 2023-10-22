@@ -1,5 +1,5 @@
 ---
-url: &url https://argocd.dev.hetzner.home.muehlbachler.io # FIXME: url
+url: &url https://argocd.dev.public.muehlbachler.io
 
 argo-cd:
   fullnameOverride: argocd-dev
@@ -42,7 +42,7 @@ argo-cd:
     ingress:
       enabled: false
       annotations:
-        cert-manager.io/cluster-issuer: cluster-issuer-home-muehlbachler-io # FIXME: issuer
+        cert-manager.io/cluster-issuer: cluster-issuer-muehlbachler-io
         external-dns.alpha.kubernetes.io/provider: public
         traefik.ingress.kubernetes.io/router.tls: "true"
 

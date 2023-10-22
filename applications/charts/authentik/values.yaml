@@ -1,5 +1,5 @@
 ---
-domain: &domain sso.dev.home.muehlbachler.io # FIXME: domain
+domain: &domain sso.dev.muehlbachler.io
 
 ldap:
   domain: *domain
@@ -8,7 +8,7 @@ authentik:
   ingress:
     enabled: true
     annotations:
-      cert-manager.io/cluster-issuer: cluster-issuer-home-muehlbachler-io # FIXME: domains
+      cert-manager.io/cluster-issuer: cluster-issuer-muehlbachler-io
       external-dns.alpha.kubernetes.io/provider: public
     hosts:
       - host: *domain
