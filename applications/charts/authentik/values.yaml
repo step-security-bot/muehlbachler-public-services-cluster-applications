@@ -55,11 +55,11 @@ authentik:
         memory: 1Gi
     worker:
       requests:
-        cpu: 5m
-        memory: 320Mi
+        cpu: 10m
+        memory: 512Mi
       limits:
         cpu: 1
-        memory: 640Mi
+        memory: 1Gi
 
   redis:
     enabled: true
@@ -69,7 +69,7 @@ authentik:
       resources:
         requests:
           cpu: 10m
-          memory: 32Mi
+          memory: 24Mi
         limits:
           cpu: 50m
-          memory: 64Mi
+          memory: 56Mi
