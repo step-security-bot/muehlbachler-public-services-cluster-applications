@@ -68,8 +68,8 @@ authentik:
         enabled: false
       resources:
         requests:
-          cpu: 10m
-          memory: 24Mi
+          cpu: 5m
+          memory: 16Mi
         limits:
-          cpu: 50m
-          memory: 56Mi
+          cpu: 100m
+          memory: 40Mi
