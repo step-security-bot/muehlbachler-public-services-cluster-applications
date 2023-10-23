@@ -39,6 +39,4 @@ argo-cd:
           - slack:announcements-public-services-cluster
         triggers:
           - on-deployed
-          - on-sync-running
-          - on-sync-succeeded
           - on-sync-status-unknown
