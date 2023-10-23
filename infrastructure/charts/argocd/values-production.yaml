@@ -1,6 +1,6 @@
 ---
-domain: &domain argocd.public.muehlbachler.io
-url: &url https://argocd.public.muehlbachler.io
+domain: &domain argocd.gke.muehlbachler.io
+url: &url https://argocd.gke.muehlbachler.io
 
 argo-cd:
   fullnameOverride: argocd-prod

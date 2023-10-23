@@ -1,5 +1,5 @@
 ---
-url: &url https://argocd.dev.public.muehlbachler.io
+url: &url https://argocd.dev.gke.muehlbachler.io
 
 argo-cd:
   fullnameOverride: argocd-dev
