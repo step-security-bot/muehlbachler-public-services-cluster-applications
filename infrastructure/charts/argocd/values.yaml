@@ -49,7 +49,7 @@ argo-cd:
     resources:
       requests:
         cpu: 5m
-        memory: 75Mi
+        memory: 64Mi
       limits:
         cpu: 50m
         memory: 96Mi
@@ -58,7 +58,7 @@ argo-cd:
     resources:
       requests:
         cpu: 10m
-        memory: 416Mi
+        memory: 320Mi
       limits:
         cpu: 1
         memory: 512Mi
@@ -67,7 +67,7 @@ argo-cd:
     resources:
       requests:
         cpu: 5m
-        memory: 64Mi
+        memory: 56Mi
       limits:
         cpu: 50m
         memory: 96Mi
@@ -119,16 +119,16 @@ argo-cd:
     resources:
       requests:
         cpu: 5m
-        memory: 150Mi
+        memory: 128Mi
       limits:
         cpu: 1
-        memory: 192Mi
+        memory: 288Mi
 
   applicationSet:
     resources:
       requests:
         cpu: 5m
-        memory: 60Mi
+        memory: 56Mi
       limits:
         cpu: 50m
         memory: 96Mi
@@ -418,7 +418,7 @@ argo-cd:
     resources:
       requests:
         cpu: 5m
-        memory: 56Mi
+        memory: 48Mi
       limits:
         cpu: 50m
         memory: 75Mi

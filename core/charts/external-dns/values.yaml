@@ -29,7 +29,7 @@ external-dns:
   resources:
     requests:
       cpu: 5m
-      memory: 45Mi
+      memory: 32Mi
     limits:
       cpu: 10m
-      memory: 64Mi
+      memory: 56Mi
