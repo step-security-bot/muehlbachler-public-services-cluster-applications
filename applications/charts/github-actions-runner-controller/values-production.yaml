@@ -19,12 +19,12 @@ labels: &labels
   - prod
 
 runners:
-  repositories:
-    - repository: muhlba91/homelab-ansible-common-services
-      nodeSelector: *nodeSelector
-      tolerations: *tolerations
-      resources: *resources
-      labels: *labels
+  repositories: []
+    # - repository: muhlba91/homelab-ansible-common-services
+    #   nodeSelector: *nodeSelector
+    #   tolerations: *tolerations
+    #   resources: *resources
+    #   labels: *labels
     # - repository: muhlba91/homelab-ansible-buildkite-agent
     #   nodeSelector: *nodeSelector
     #   tolerations: *tolerations
