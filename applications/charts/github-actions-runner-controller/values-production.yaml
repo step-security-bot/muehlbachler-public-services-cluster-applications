@@ -8,8 +8,8 @@ tolerations: &tolerations
     effect: NoSchedule
 resources: &resources
   requests:
-    cpu: 250m
-    memory: 3Gi
+    cpu: 200m
+    memory: 2Gi
   limits:
     cpu: '1'
     memory: 5Gi
