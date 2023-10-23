@@ -20,7 +20,8 @@ traefik:
     traefik:
       expose: false
     web:
-      redirectTo: websecure
+      redirectTo:
+        port: websecure
       proxyProtocol:
         insecure: true
         trustedIPs:
