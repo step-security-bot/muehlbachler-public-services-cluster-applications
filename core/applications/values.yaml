@@ -48,3 +48,4 @@ applications:
     disabled: false
     namespace: tailscale
     helm: true
+    enableAutomated: false # FIXME: enable when solved
