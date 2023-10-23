@@ -7,4 +7,4 @@ global:
       valueFiles:
         - values.yaml
         - values-production.yaml
-    enableAutomated: false # FIXME: enable again
+    enableAutomated: true

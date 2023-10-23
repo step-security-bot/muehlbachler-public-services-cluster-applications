@@ -15,7 +15,7 @@ global:
       enabled: true
       valueFiles:
         - values.yaml
-    enableAutomated: false # FIXME: enable again
+    enableAutomated: true
     syncOptions: []
 
 projects:
