@@ -9,10 +9,10 @@ tolerations: &tolerations
 resources: &resources
   requests:
     cpu: 250m
-    memory: 3072Mi
+    memory: 3Gi
   limits:
-    cpu: 1
-    memory: 5120Mi
+    cpu: '1'
+    memory: 5Gi
 labels: &labels
   - tuxnet
   - vpn
