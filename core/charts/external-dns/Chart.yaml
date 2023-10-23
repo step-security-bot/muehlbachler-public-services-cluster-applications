@@ -1,6 +1,6 @@
 ---
 apiVersion: v2
-name: external-dns-google
+name: external-dns
 description: Customized External DNS for Google
 
 version: 1.0.0

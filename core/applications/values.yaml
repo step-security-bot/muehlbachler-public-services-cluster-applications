@@ -25,12 +25,12 @@ applications:
     namespace: cert-manager
     helm: true
     syncWave: -200
-  external-dns-google:
+  external-dns:
     project: "core-{{ $.Values.global.projectEnvironment }}"
-    path: core/charts/external-dns-google
-    releaseName: external-dns-google
+    path: core/charts/external-dns
+    releaseName: external-dns
     disabled: false
-    namespace: external-dns-google
+    namespace: external-dns
     helm: true
     syncWave: -200
   traefik:
