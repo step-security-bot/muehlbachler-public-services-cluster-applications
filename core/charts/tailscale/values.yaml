@@ -34,35 +34,15 @@ app-template:
             capabilities:
               add:
                 - NET_ADMIN
+                - NET_RAW
 
           resources:
             requests:
-              cpu: 5m
-              memory: 16Mi
+              cpu: 3m
+              memory: 32Mi
             limits:
               cpu: 50m
               memory: 64Mi
-
-      initContainers:
-        secret:
-          image:
-            repository: bitnami/kubectl
-            tag: 1.28
-            pullPolicy: IfNotPresent
-          command:
-            - /scripts/secret.sh
-          env:
-            - name: NODE_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: spec.nodeName
-          resources:
-            requests:
-              cpu: 10m
-              memory: 64Mi
-            limits:
-              cpu: 100m
-              memory: 128Mi
 
   defaultPodOptions:
     hostNetwork: true
@@ -70,13 +50,6 @@ app-template:
   serviceAccount:
     create: true
     name: *service_account_name
-
-  persistence:
-    scripts:
-      enabled: true
-      type: configMap
-      name: tailscale-scripts
-      defaultMode: 511
 
   service:
     main:
