@@ -56,10 +56,10 @@ authentik:
     worker:
       requests:
         cpu: 5m
-        memory: 272Mi
+        memory: 384Mi
       limits:
         cpu: 1
-        memory: 368Mi
+        memory: 512Mi
 
   redis:
     enabled: true
