@@ -48,14 +48,14 @@ authentik:
   resources:
     server:
       requests:
-        cpu: 5m
-        memory: 640Mi
+        cpu: 10m
+        memory: 512Mi
       limits:
         cpu: 1
         memory: 1Gi
     worker:
       requests:
-        cpu: 10m
+        cpu: 5m
         memory: 320Mi
       limits:
         cpu: 1
@@ -72,4 +72,4 @@ authentik:
           memory: 32Mi
         limits:
           cpu: 50m
-          memory: 72Mi
+          memory: 64Mi
