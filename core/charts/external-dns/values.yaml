@@ -6,8 +6,8 @@ external-dns:
     tag: v0.13.6
 
   serviceAccount:
-    create: false
-    name: external-dns
+    annotations:
+      iam.gke.io/gcp-service-account: pub-svcs-external-dns-prod@public-services-402810.iam.gserviceaccount.com
 
   sources:
     - service

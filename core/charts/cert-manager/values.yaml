@@ -12,8 +12,8 @@ cert-manager:
   installCRDs: true
 
   serviceAccount:
-    create: false
-    name: cert-manager
+    annotations:
+      iam.gke.io/gcp-service-account: pub-svcs-cert-manager-prod@public-services-402810.iam.gserviceaccount.com
 
   extraArgs:
     - "--dns01-recursive-nameservers-only"
