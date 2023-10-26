@@ -22,6 +22,7 @@ spec:
   interval: 5m # FIXME:
   maxHistory: 3
   install:
+    createNamespace: true
     crds: Create
     remediation:
       retries: -1
