@@ -2,7 +2,7 @@
 libraryChartPath: &library_chart_path library/charts/applications
 gitRepository: &repo
   repoURL: https://github.com/muhlba91/muehlbachler-public-services-cluster-applications.git
-  targetRevision: HEAD
+  targetRevision: argocd
 
 global:
   prefix: app-of-apps

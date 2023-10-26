@@ -6,10 +6,10 @@ global:
     namespace: argocd
     source:
       repoURL: https://repo.com/source.git
-      targetRevision: HEAD
+      targetRevision: argocd
     values:
       repoURL: https://repo.com/values.git
-      targetRevision: HEAD
+      targetRevision: argocd
     syncWave: 0
     helm:
       enabled: true
