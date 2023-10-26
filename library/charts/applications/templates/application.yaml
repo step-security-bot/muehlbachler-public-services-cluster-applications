@@ -49,10 +49,10 @@ spec:
       prune: false
       allowEmpty: false
       {{- end }}
-      selfHeal: true
+      selfHeal: false
     {{- end }}
     syncOptions:
-      - CreateNamespace={{ ternary "true" "false" (ne (default $.Values.global.spec.namespace $app.namespace) "argocd") }}
+       - CreateNamespace={{ ternary "true" "false" (ne (default $.Values.global.spec.namespace $app.namespace) "argocd") }}
       - FailOnSharedResource=true
     {{- with (default $.Values.global.spec.syncOptions $app.syncOptions) -}}
       {{ . | toYaml |  nindent 6 }}
