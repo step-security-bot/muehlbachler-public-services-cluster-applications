@@ -12,7 +12,7 @@ spec:
     solvers:
       - selector:
           dnsZones:
-            - muehlbachler-io
+            - muehlbachler.io
         dns01:
           cloudDNS:
             project: muehlbachler-dns
