@@ -1,9 +1,0 @@
----
-traefik:
-  additionalArguments:
-    - "--serversTransport.insecureSkipVerify=true"
-    - "--providers.kubernetesingress.ingressendpoint.ip=35.214.252.245"
-
-  service:
-    externalIPs:
-      - 35.214.252.245

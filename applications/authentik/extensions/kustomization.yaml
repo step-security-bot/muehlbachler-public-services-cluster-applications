@@ -1,0 +1,9 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: authentik
+resources:
+  - ./external-secret-authentik-config.yaml
+  - ./external-secret-authentik-email-config.yaml
+  - ./external-secret-authentik-secrets.yaml
+  - ./outpost-ldap-ingressroute.yaml

@@ -1,0 +1,20 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: applications
+spec:
+  targetNamespace: flux-system
+  sourceRef:
+    kind: GitRepository
+    name: cluster-applications
+  path: ./applications/
+  dependsOn:
+    - name: infrastructure
+    - name: core
+  interval: 5m # FIXME:
+  retryInterval: 2m
+  timeout: 3m
+  wait: true
+  prune: true
+  force: false

@@ -1,0 +1,53 @@
+---
+fullnameOverride: traefik
+
+providers:
+  kubernetesCRD:
+    allowExternalNameServices: true
+    allowEmptyServices: true
+  kubernetesIngress:
+    allowExternalNameServices: true
+    allowEmptyServices: true
+    publishedService:
+      enabled: false
+
+additionalArguments:
+  - "--serversTransport.insecureSkipVerify=true"
+  - "--providers.kubernetesingress.ingressendpoint.ip=35.214.252.245"
+
+ports:
+  traefik:
+    expose: false
+  web:
+    redirectTo:
+      port: websecure
+    proxyProtocol:
+      insecure: true
+      trustedIPs:
+        - 10.0.0.0/8
+  websecure:
+    proxyProtocol:
+      insecure: true
+      trustedIPs:
+        - 10.0.0.0/8
+  ldaps:
+    port: 8636
+    expose: true
+    exposedPort: 636
+    protocol: TCP
+
+service:
+  type: ClusterIP
+  # ipFamilyPolicy: PreferDualStack
+  externalIPs:
+    - 35.214.252.245
+  spec:
+    clusterIP: None
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 56Mi
+  limits:
+    cpu: 50m
+    memory: 128Mi

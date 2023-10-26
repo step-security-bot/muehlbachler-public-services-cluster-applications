@@ -1,0 +1,74 @@
+---
+domain: &domain sso.muehlbachler.io # FIXME:
+
+ldap:
+  domain: *domain # FIXME:
+
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: cluster-issuer-muehlbachler-io
+    external-dns.alpha.kubernetes.io/provider: public
+  hosts:
+    - host: *domain
+      paths:
+        - path: "/"
+          pathType: Prefix
+  tls:
+    - secretName: authentik-tls-cert
+      hosts:
+        - *domain
+
+authentik:
+  email:
+    port: 587
+    timeout: 30
+    host: ""
+    username: ""
+    password: ""
+    use_tls: ""
+    use_ssl: ""
+    from: ""
+  postgresql:
+    port: ""
+    host: ""
+    name: ""
+    user: ""
+    password: ""
+
+envFrom:
+  - secretRef:
+      name: authentik-email-config
+  - secretRef:
+      name: authentik-config
+  - secretRef:
+      name: authentik-secrets
+
+resources:
+  server:
+    requests:
+      cpu: 10m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+  worker:
+    requests:
+      cpu: 10m
+      memory: 512Mi
+    limits:
+      cpu: 1
+      memory: 1Gi
+
+redis:
+  enabled: true
+  master:
+    persistence:
+      enabled: false
+    resources:
+      requests:
+        cpu: 5m
+        memory: 16Mi
+      limits:
+        cpu: 100m
+        memory: 40Mi

@@ -3,47 +3,33 @@
 [![Build status](https://img.shields.io/github/actions/workflow/status/muhlba91/muehlbachler-public-services-cluster-applications/pipeline.yml?style=for-the-badge)](https://github.com/muhlba91/muehlbachler-public-services-cluster-applications/actions/workflows/pipeline.yml)
 [![License](https://img.shields.io/github/license/muhlba91/muehlbachler-public-services-cluster-applications?style=for-the-badge)](LICENSE.md)
 
-This repository contains applications deployed on the `public-services-cluster` via [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) using [GitOps](https://opengitops.dev).
+This repository contains applications deployed on the `public-services-cluster` via [Flux](https://fluxcd.io) using [GitOps](https://opengitops.dev).
 
 ---
 
 ## Bootstrapping
 
-The Kubernetes cluster needs to be bootstrapped with ArgoCD with an `Application` pointing to this repository.
+The Kubernetes cluster needs to be bootstrapped with Flux pointing to this repository.
 
-For [ksops](https://github.com/viaduct-ai/kustomize-sops) and ArgoCD to decrypt the initial secrets for configuring the [External Secrets Operator](http://external-secrets.io) using [Doppler](http://doppler.com), a [Google Cloud Service Account](https://cloud.google.com/docs/authentication#service-accounts) with access to the correct KMS key needs to be set in the `argocd` namespace.
-
-ArgoCD will then manage itself and all applications as defined in this repository.
+For [sops](https://github.com/viaduct-ai/kustomize-sops) and Flux to decrypt the initial secrets for configuring the [External Secrets Operator](http://external-secrets.io) using [Doppler](http://doppler.com), a [Google Cloud Service Account](https://cloud.google.com/docs/authentication#service-accounts) with access to the correct KMS key needs to be set in the `flux` namespace.
 
 ***Attention:*** some applications will be automatically deployed, others not (yet).
 
 ---
 
-## ArgoCD App-of-Apps
+## App-of-Apps
 
-The repository layout follows ArgoCD's [app-of-apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/).
+The repository follows the app-of-apps pattern.
 
-The first ArgoCD `Application` being defined needs to reference [`app-of-apps/values.yaml`](app-of-apps/values.yaml) and the environment specific `values-<ENVIRONMENT>.yaml` files.
+The first Flux `Kustomization` being defined needs to reference [`app-of-apps/`](app-of-apps/) and the environment specific `<ENVIRONMENT>/` directory.
 
-These are bootstrapping the main ArgoCD projects and applications, referring to the respective `<PROJECT>/applications/values[-<ENVIRONMENT>].yaml` files:
+These are bootstrapping the main Flux applications, referring to the respective `<PROJECT>/applications/` kosutomizations:
 
-- [`infrastructure`](#infrastructure): core cluster infrastructure, like Cilium and ArgoCD
-- [`core`](#core-applications): core applications, like [cert-manager](http://cert-manager.io) and [traefik](https://traefik.io)
+- [`infrastructure`](#infrastructure): core cluster infrastructure
+- [`core`](#core-applications): core applications
 - [`applications`](#user-applications): (user) applications running on the cluster/network
 
-Each of these applications follows the app-of-apps pattern again using subcharts defined in the respective `charts` directory.
-
-### Additional Helm Value Files
-
-In addition to the included `values[-<ENVIRONMENT].yaml` files, ArgoCD `Application`s load additonal Helm value files from an external repository defined with `global.spec.values.repoURL`.
-
-For example, values only defined in the external repository are ingress domains.
-
-## Library Charts
-
-### Applications
-
-To support bootstrapping these app-of-apps `Application`s, the library chart [applications](library/charts/applications) creates the ArgoCD `Project` and `Application` definitions based on the provided values.
+Each of these applications follows the app-of-apps pattern again using sub-kustomizations defined in the respective application directories.
 
 ---
 
@@ -51,30 +37,24 @@ To support bootstrapping these app-of-apps `Application`s, the library chart [ap
 
 ### Infrastructure
 
-The following applications are defined in [`infrastructure/charts`](infrastructure/charts).
+The following applications are defined in [`infrastructure/`](infrastructure/).
 
-- [x] [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) - Manages the applications deployed on the cluster using GitOps.
 - [x] [External Secrets Operator](http://external-secrets.io) - Synchronizes secrets from external stores to Kubernetes `Secret` objects.
-
-#### Kustomizations
-
-- [x] [External Secrets Stores](infrastructure/kustomizations/external-secrets-stores) - Deploys the required `ClusterSecretStore`s and Doppler [Service Tokens](https://docs.doppler.com/docs/service-tokens) as Kubernetes `Secret`s.
+  - [x] [External Secrets Stores](infrastructure/external-secrets/) - Deploys the required `ClusterSecretStore`s and Doppler [Service Tokens](https://docs.doppler.com/docs/service-tokens) as Kubernetes `Secret`s.
+- [x] [Traefik](https://traefik.io) - Exposes Kubernetes `Ingress` resources to the "outside world".
 
 ### Core Applications
 
-The following applications are defined in [`core/charts`](core/charts).
+The following applications are defined in [`core/`](core/).
 
 - [x] [cert-manager](https://cert-manager.io) - Certificate management using ACME Let's Encrypt.
 - [x] [External DNS with Google Cloud DNS integration](https://github.com/kubernetes-sigs/external-dns) - Creates DNS records in Google Cloud DNS domains for publicly reachable services.
-- [x] [Tailscale](http://tailscale.com) - Establishes connectivity to on-premises subnets (using `DaemonSet`s).
-- [x] [Traefik](https://traefik.io) - Exposes Kubernetes `Ingress` resources to the "outside world".
 
 ### (User) Applications
 
-The following applications are defined in [`applications/charts`](applications/charts).
+The following applications are defined in [`applications/`](applications/).
 
 - [x] [Authentik](http://goauthentik.io) - Open Source identity provider.
-- [x] [GitHub Actions Runner Controller](https://github.com/actions/actions-runner-controller) - Kubernetes operator to start GitHub Actions runners.
 
 ---
 
@@ -86,5 +66,5 @@ No (cluster-wide) backup and restore has been implemented as of yet.
 
 ## Continuous Integration and Automations
 
-- [GitHub Actions](https://docs.github.com/en/actions) are linting and templating all Helm charts.
-- [Renovate Bot](https://github.com/renovatebot/renovate) is updating Helm (sub)charts and used container images in the `values.yaml` files, and GitHub Actions.
+- [GitHub Actions](https://docs.github.com/en/actions) are linting all YAML files.
+- [Renovate Bot](https://github.com/renovatebot/renovate) is updating Helm releases and used container images in the `values.yaml` files, and GitHub Actions.

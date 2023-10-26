@@ -1,0 +1,34 @@
+---
+image:
+  registry: registry.k8s.io
+  repository: external-dns/external-dns
+  tag: v0.13.6
+
+serviceAccount:
+  annotations:
+    iam.gke.io/gcp-service-account: pub-svcs-external-dns-prod@public-services-402810.iam.gserviceaccount.com
+
+sources:
+  - service
+  - ingress
+
+interval: 2m
+
+logLevel: error
+
+domainFilters:
+  - muehlbachler.io
+annotationFilter: external-dns.alpha.kubernetes.io/provider=public
+
+txtOwnerId: external-dns-public-services-cluster-prod
+provider: google
+google:
+  project: muehlbachler-dns
+
+resources:
+  requests:
+    cpu: 2m
+    memory: 32Mi
+  limits:
+    cpu: 10m
+    memory: 56Mi

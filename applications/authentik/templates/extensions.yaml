@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: authentik-extensions
+spec:
+  targetNamespace: authentik
+  sourceRef:
+    kind: GitRepository
+    name: cluster-applications
+  path: ./applications/authentik/extensions/
+  interval: 5m # FIXME:
+  retryInterval: 2m
+  timeout: 3m
+  wait: true
+  prune: true
+  force: false

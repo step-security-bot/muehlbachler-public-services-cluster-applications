@@ -1,5 +1,0 @@
----
-external-dns:
-  txtOwnerId: external-dns-public-services-cluster-prod
-
-  interval: 2m
