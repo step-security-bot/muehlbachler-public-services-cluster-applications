@@ -14,7 +14,7 @@ sources:
 
 interval: 2m
 
-logLevel: info
+logLevel: error
 
 domainFilters:
   - muehlbachler.io
