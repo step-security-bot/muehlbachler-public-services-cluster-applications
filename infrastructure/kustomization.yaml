@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - ./external-secrets/
-  # - ./traefik/
+  - ./traefik/
