@@ -4,6 +4,9 @@ domain: &domain sso.muehlbachler.io # FIXME:
 ldap:
   domain: *domain # FIXME:
 
+strategy:
+  type: Recreate
+
 ingress:
   enabled: true
   annotations:
