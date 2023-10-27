@@ -7,6 +7,10 @@ ldap:
 strategy:
   type: Recreate
 
+worker:
+  strategy:
+    type: Recreate
+
 ingress:
   enabled: true
   annotations:
