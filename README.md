@@ -21,7 +21,7 @@ For [sops](https://github.com/viaduct-ai/kustomize-sops) and Flux to decrypt the
 
 The repository follows the app-of-apps pattern.
 
-The first Flux `Kustomization` being defined needs to reference [`app-of-apps/`](app-of-apps/) and the environment specific `<ENVIRONMENT>/` directory.
+The first Flux `Kustomization` being defined needs to reference [`app-of-apps/`](app-of-apps/).
 
 These are bootstrapping the main Flux applications, referring to the respective `<PROJECT>/applications/` kosutomizations:
 

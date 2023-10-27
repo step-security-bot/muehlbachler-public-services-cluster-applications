@@ -11,9 +11,4 @@ spec:
   path: ./infrastructure/external-secrets/extensions/
   decryption:
     provider: sops
-  interval: 5m # FIXME:
-  retryInterval: 2m
-  timeout: 3m
   wait: true
-  prune: true
-  force: false

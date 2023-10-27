@@ -9,9 +9,4 @@ spec:
     kind: GitRepository
     name: cluster-applications
   path: ./core/cert-manager/issuers/
-  interval: 5m # FIXME:
-  retryInterval: 2m
-  timeout: 3m
-  wait: true
-  prune: true
-  force: false
+  wait: false
