@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   type: slack
-  channel: announcements-home-cluster
+  channel: announcements-public-services-cluster
   address: https://slack.com/api/chat.postMessage
   secretRef:
     name: slack-token
