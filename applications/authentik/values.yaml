@@ -1,9 +1,4 @@
 ---
-domain: &domain sso.muehlbachler.io # FIXME:
-
-ldap:
-  domain: *domain # FIXME:
-
 strategy:
   type: Recreate
 
@@ -17,7 +12,7 @@ ingress:
     cert-manager.io/cluster-issuer: cluster-issuer-muehlbachler-io
     external-dns.alpha.kubernetes.io/provider: public
   hosts:
-    - host: *domain
+    - host: &domain sso.muehlbachler.io
       paths:
         - path: "/"
           pathType: Prefix
