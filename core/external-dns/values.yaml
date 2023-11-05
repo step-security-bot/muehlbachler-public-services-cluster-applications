@@ -22,6 +22,7 @@ logLevel: error
 
 domainFilters:
   - muehlbachler.io
+  - email.muehlbachler.io
 annotationFilter: external-dns.alpha.kubernetes.io/provider=public
 
 txtOwnerId: external-dns-public-services-cluster-prod
