@@ -10,7 +10,7 @@ controllers:
           repository: simplelogin/app-ci
           pullPolicy: IfNotPresent
           tag: v4.35.3
-        
+
         command:
           - gunicorn
           - "wsgi:app"
