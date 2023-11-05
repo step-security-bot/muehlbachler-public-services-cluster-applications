@@ -1,0 +1,147 @@
+---
+global:
+  fullnameOverride: simplelogin
+
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          repository: simplelogin/app-ci
+          pullPolicy: IfNotPresent
+          tag: v4.35.3
+        
+        command:
+          - gunicorn
+          - "wsgi:app"
+          - -b
+          - "0.0.0.0:7777"
+          - -w
+          - "1"
+          - --timeout
+          - "30"
+
+        resources:
+          requests:
+            cpu: 50m
+            memory: 192Mi
+          limits:
+            cpu: 1
+            memory: 320Mi
+
+      handler:
+        image:
+          repository: simplelogin/app-ci
+          pullPolicy: IfNotPresent
+          tag: v4.35.3
+
+        command:
+          - python
+          - email_handler.py
+
+        resources:
+          requests:
+            cpu: 10m
+            memory: 160Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+
+      runner:
+        image:
+          repository: simplelogin/app-ci
+          pullPolicy: IfNotPresent
+          tag: v4.35.3
+
+        command:
+          - python
+          - job_runner.py
+
+        resources:
+          requests:
+            cpu: 3m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 192Mi
+
+    initContainers:
+      init:
+        image:
+          repository: simplelogin/app-ci
+          pullPolicy: IfNotPresent
+          tag: v4.35.3
+        command:
+          - sh
+          - -c
+          - "mkdir /sl/gnupg; alembic upgrade head; python init_app.py"
+        resources:
+          requests:
+            cpu: 10m
+            memory: 128Mi
+          limits:
+            cpu: 1
+            memory: 384Mi
+
+serviceAccount:
+  create: true
+
+defaultPodOptions:
+  automountServiceAccountToken: false
+
+service:
+  main:
+    ports:
+      http:
+        port: 7777
+  handler:
+    enabled: true
+    controller: main
+    type: ClusterIP
+    clusterIP: None
+    ports:
+      email:
+        enabled: true
+        port: 20381
+        protocol: TCP
+        targetPort: 20381
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: cluster-issuer-email-muehlbachler-io
+      external-dns.alpha.kubernetes.io/provider: public
+    hosts:
+      - host: &domain admin.email.muehlbachler.io
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            service:
+              name: simplelogin
+              port: 7777
+    tls:
+      - secretName: simplelogin-tls-cert
+        hosts:
+          - *domain
+
+persistence:
+  data:
+    enabled: true
+    type: emptyDir
+    globalMounts:
+      - path: /sl
+  dkim-key:
+    enabled: true
+    type: secret
+    name: dkim-key
+    globalMounts:
+      - path: /dkim.key
+        subPath: private_key
+  environment:
+    enabled: true
+    type: secret
+    name: simplelogin-config
+    globalMounts:
+      - path: /code/.env
+        subPath: environment
