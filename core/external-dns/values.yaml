@@ -8,7 +8,11 @@ serviceAccount:
   annotations:
     iam.gke.io/gcp-service-account: pub-svcs-external-dns-prod@public-services-402810.iam.gserviceaccount.com
 
+crd:
+  create: true
+
 sources:
+  - crd
   - service
   - ingress
 
