@@ -21,13 +21,23 @@ spec:
       recordTTL: 300
       recordType: TXT
       targets:
-        - sl-verification=vrflpflpdzcmgmhwprsnlleefceiwk
         - "\"v=spf1 include:email.muehlbachler.io -all\""
+        # - sl-verification=vrflpflpdzcmgmhwprsnlleefceiwk
     - dnsName: dkim._domainkey.d1n.email.muehlbachler.io
       recordTTL: 300
       recordType: CNAME
       targets:
         - dkim._domainkey.email.muehlbachler.io
+    - dnsName: dkim02._domainkey.d1n.email.muehlbachler.io
+      recordTTL: 300
+      recordType: CNAME
+      targets:
+        - dkim02._domainkey.email.muehlbachler.io
+    - dnsName: dkim03._domainkey.d1n.email.muehlbachler.io
+      recordTTL: 300
+      recordType: CNAME
+      targets:
+        - dkim03._domainkey.email.muehlbachler.io
     - dnsName: d1n.email.muehlbachler.io
       recordTTL: 300
       recordType: MX
