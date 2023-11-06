@@ -21,6 +21,7 @@ spec:
       recordTTL: 300
       recordType: TXT
       targets:
+        - sl-verification=vrflpflpdzcmgmhwprsnlleefceiwk
         - "\"v=spf1 include:email.muehlbachler.io -all\""
     - dnsName: dkim._domainkey.d1n.email.muehlbachler.io
       recordTTL: 300
