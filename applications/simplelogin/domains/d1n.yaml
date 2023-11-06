@@ -11,17 +11,17 @@ spec:
       recordTTL: 300
       recordType: TXT
       targets:
-        - "dkim=all"
+        - "\"dkim=all\""
     - dnsName: _dmarc.d1n.email.muehlbachler.io
       recordTTL: 300
       recordType: TXT
       targets:
-        - "v=DMARC1; p=quarantine; pct=100; adkim=s; aspf=s"
+        - "\"v=DMARC1; p=quarantine; pct=100; adkim=s; aspf=s\""
     - dnsName: d1n.email.muehlbachler.io
       recordTTL: 300
       recordType: TXT
       targets:
-        - "v=spf1 include:email.muehlbachler.io -all"
+        - "\"v=spf1 include:email.muehlbachler.io -all\""
     - dnsName: dkim._domainkey.d1n.email.muehlbachler.io
       recordTTL: 300
       recordType: CNAME
