@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ./templates/extensions.yaml
   - ./templates/release.yaml
+  - ./templates/domains.yaml
 configMapGenerator:
   - name: simplelogin-values
     files:
