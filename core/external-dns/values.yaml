@@ -26,7 +26,7 @@ domainFilters:
 annotationFilter: external-dns.alpha.kubernetes.io/provider=public
 
 txtOwnerId: external-dns-public-services-cluster-prod
-txtPrefix: extdns
+txtPrefix: extdns-
 provider: google
 google:
   project: muehlbachler-dns
