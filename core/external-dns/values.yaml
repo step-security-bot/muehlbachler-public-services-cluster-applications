@@ -24,6 +24,12 @@ domainFilters:
   - muehlbachler.io
   - email.muehlbachler.io
 annotationFilter: external-dns.alpha.kubernetes.io/provider=public
+managedRecordTypesFilters:
+  - A
+  - AAAA
+  - CNAME
+  - MX
+  - TXT
 
 txtOwnerId: external-dns-public-services-cluster-prod
 txtPrefix: extdns-
