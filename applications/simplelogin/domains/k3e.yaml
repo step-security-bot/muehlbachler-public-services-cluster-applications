@@ -2,44 +2,44 @@
 apiVersion: externaldns.k8s.io/v1alpha1
 kind: DNSEndpoint
 metadata:
-  name: d1n-email-muehlbachler-io
+  name: k3e-email-muehlbachler-io
   annotations:
     external-dns.alpha.kubernetes.io/provider: public
-    simplelogin/owner: daniel
+    simplelogin/owner: katarzyna
 spec:
   endpoints:
-    - dnsName: _adsp._domainkey.d1n.email.muehlbachler.io
+    - dnsName: _adsp._domainkey.k3e.email.muehlbachler.io
       recordTTL: 300
       recordType: TXT
       targets:
         - "\"dkim=all\""
-    - dnsName: _dmarc.d1n.email.muehlbachler.io
+    - dnsName: _dmarc.k3e.email.muehlbachler.io
       recordTTL: 300
       recordType: TXT
       targets:
         - "\"v=DMARC1; p=quarantine; pct=100; adkim=s; aspf=s\""
-    - dnsName: d1n.email.muehlbachler.io
+    - dnsName: k3e.email.muehlbachler.io
       recordTTL: 300
       recordType: TXT
       targets:
         - "\"v=spf1 include:relay.email.muehlbachler.io -all\""
-        # - sl-verification=vrflpflpdzcmgmhwprsnlleefceiwk
-    - dnsName: dkim._domainkey.d1n.email.muehlbachler.io
+        # - sl-verification=taqseynbsodmezelavyejcfonfopeh
+    - dnsName: dkim._domainkey.k3e.email.muehlbachler.io
       recordTTL: 300
       recordType: CNAME
       targets:
         - dkim._domainkey.relay.email.muehlbachler.io
-    - dnsName: dkim02._domainkey.d1n.email.muehlbachler.io
+    - dnsName: dkim02._domainkey.k3e.email.muehlbachler.io
       recordTTL: 300
       recordType: CNAME
       targets:
         - dkim02._domainkey.relay.email.muehlbachler.io
-    - dnsName: dkim03._domainkey.d1n.email.muehlbachler.io
+    - dnsName: dkim03._domainkey.k3e.email.muehlbachler.io
       recordTTL: 300
       recordType: CNAME
       targets:
         - dkim03._domainkey.relay.email.muehlbachler.io
-    - dnsName: d1n.email.muehlbachler.io
+    - dnsName: k3e.email.muehlbachler.io
       recordTTL: 300
       recordType: MX
       targets:

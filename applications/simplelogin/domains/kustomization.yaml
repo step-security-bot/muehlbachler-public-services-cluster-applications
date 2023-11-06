@@ -4,3 +4,4 @@ kind: Kustomization
 namespace: simplelogin
 resources:
   - ./d1n.yaml
+  - ./k3e.yaml
