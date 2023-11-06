@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: simplelogin-config
 data:
-  URL: https://admin.email.muehlbachler.io
+  URL: https://aliases.email.muehlbachler.io
   # email settings
   EMAIL_DOMAIN: relay.email.muehlbachler.io
   EMAIL_SERVERS_WITH_PRIORITY: "[(10, 'relay.email.muehlbachler.io.'), (20, 'relay.email.muehlbachler.io.')]"

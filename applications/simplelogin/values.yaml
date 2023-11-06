@@ -147,7 +147,7 @@ ingress:
       cert-manager.io/cluster-issuer: cluster-issuer-email-muehlbachler-io
       external-dns.alpha.kubernetes.io/provider: public
     hosts:
-      - host: &domain admin.email.muehlbachler.io
+      - host: &domain aliases.email.muehlbachler.io
         paths:
           - path: /
             pathType: ImplementationSpecific
