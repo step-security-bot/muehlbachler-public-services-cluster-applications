@@ -3,6 +3,8 @@ apiVersion: externaldns.k8s.io/v1alpha1
 kind: DNSEndpoint
 metadata:
   name: d1n-email-muehlbachler-io
+  annotations:
+    external-dns.alpha.kubernetes.io/provider: public
 spec:
   endpoints:
     - dnsName: _adsp._domainkey.d1n.email.muehlbachler.io
