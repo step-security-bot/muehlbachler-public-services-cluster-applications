@@ -99,7 +99,7 @@ controllers:
         command:
           - sh
           - -c
-          - "mkdir /sl/gnupg; alembic upgrade head; python init_app.py"
+          - "/init.sh"
 
         envFrom:
           - configMapRef:
@@ -172,3 +172,13 @@ persistence:
     globalMounts:
       - path: /dkim.key
         subPath: private_key
+  init:
+    enabled: true
+    type: configMap
+    name: simplelogin-init
+    defaultMode: 511
+    advancedMounts:
+      main:
+        init:
+          - path: /init.sh
+            subPath: init.sh
