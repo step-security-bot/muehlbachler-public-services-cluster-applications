@@ -5,12 +5,17 @@ metadata:
   name: simplelogin-config
 data:
   URL: https://admin.email.muehlbachler.io
+  # email settings
   EMAIL_DOMAIN: relay.email.muehlbachler.io
   EMAIL_SERVERS_WITH_PRIORITY: "[(10, 'relay.email.muehlbachler.io.'), (20, 'relay.email.muehlbachler.io.')]"
   SUPPORT_EMAIL: "noreply@email.muehlbachler.io"
   SUPPORT_NAME: "E-Mail Relay"
   POSTFIX_PORT: "1025"
+  # user settings
+  # run: UPDATE users SET lifetime = TRUE;
   DISABLE_ONBOARDING: "false"
+  DISABLE_REGISTRATION: "1"
+  # static settings
   ENFORCE_SPF: "true"
   DISABLE_ALIAS_SUFFIX: "1"
   DKIM_PRIVATE_KEY_PATH: /dkim.key
