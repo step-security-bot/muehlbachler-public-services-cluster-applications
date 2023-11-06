@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: simplelogin-config
+data:
+  URL: https://admin.email.muehlbachler.io
+  EMAIL_DOMAIN: relay.email.muehlbachler.io
+  EMAIL_SERVERS_WITH_PRIORITY: "[(10, 'relay.email.muehlbachler.io.'), (20, 'relay.email.muehlbachler.io.')]"
+  SUPPORT_EMAIL: "noreply@email.muehlbachler.io"
+  SUPPORT_NAME: "E-Mail Relay"
+  POSTFIX_PORT: "1025"
+  DISABLE_ONBOARDING: "false"
+  ENFORCE_SPF: "true"
+  DISABLE_ALIAS_SUFFIX: "1"
+  DKIM_PRIVATE_KEY_PATH: /dkim.key
+  GNUPGHOME: /sl/gnupg
+  ALLOWED_REDIRECT_DOMAINS: "[]"
+  NAMESERVERS: "1.1.1.1"

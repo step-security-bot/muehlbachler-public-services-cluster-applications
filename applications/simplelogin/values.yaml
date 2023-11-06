@@ -21,6 +21,14 @@ controllers:
           - --timeout
           - "30"
 
+        envFrom:
+          - configMapRef:
+              name: simplelogin-config
+          - secretRef:
+              name: simplelogin-config
+          - secretRef:
+              name: simplelogin-database
+
         resources:
           requests:
             cpu: 50m
@@ -38,6 +46,14 @@ controllers:
         command:
           - python
           - email_handler.py
+
+        envFrom:
+          - configMapRef:
+              name: simplelogin-config
+          - secretRef:
+              name: simplelogin-config
+          - secretRef:
+              name: simplelogin-database
 
         resources:
           requests:
@@ -57,6 +73,14 @@ controllers:
           - python
           - job_runner.py
 
+        envFrom:
+          - configMapRef:
+              name: simplelogin-config
+          - secretRef:
+              name: simplelogin-config
+          - secretRef:
+              name: simplelogin-database
+
         resources:
           requests:
             cpu: 3m
@@ -71,10 +95,20 @@ controllers:
           repository: simplelogin/app-ci
           pullPolicy: IfNotPresent
           tag: v4.35.3
+
         command:
           - sh
           - -c
           - "mkdir /sl/gnupg; alembic upgrade head; python init_app.py"
+
+        envFrom:
+          - configMapRef:
+              name: simplelogin-config
+          - secretRef:
+              name: simplelogin-config
+          - secretRef:
+              name: simplelogin-database
+
         resources:
           requests:
             cpu: 10m
@@ -138,10 +172,3 @@ persistence:
     globalMounts:
       - path: /dkim.key
         subPath: private_key
-  environment:
-    enabled: true
-    type: secret
-    name: simplelogin-config
-    globalMounts:
-      - path: /code/.env
-        subPath: environment

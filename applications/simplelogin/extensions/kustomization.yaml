@@ -4,4 +4,6 @@ kind: Kustomization
 namespace: simplelogin
 resources:
   - ./external-secret-dkim-key.yaml
+  - ./external-secret-simplelogin-database.yaml
   - ./external-secret-simplelogin-config.yaml
+  - ./configmap.yaml
