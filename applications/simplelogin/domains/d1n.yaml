@@ -31,5 +31,5 @@ spec:
       recordTTL: 300
       recordType: MX
       targets:
-        - "10 relay.email.muehlbachler.io."
-        - "20 relay.email.muehlbachler.io."
+        - "10 relay.email.muehlbachler.io"
+        - "20 relay.email.muehlbachler.io"
