@@ -54,7 +54,7 @@ The following applications are defined in [`core/`](core/).
 
 The following applications are defined in [`applications/`](applications/).
 
-- [x] [Authentik](http://goauthentik.io) - Open Source identity provider.
+- [x] [SimpleLogin](https://simplelogin.io) - Open Source e-mail relay.
 
 ---
 

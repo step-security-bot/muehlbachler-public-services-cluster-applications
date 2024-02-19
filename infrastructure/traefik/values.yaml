@@ -30,11 +30,6 @@ ports:
       insecure: true
       trustedIPs:
         - 10.0.0.0/8
-  ldaps:
-    port: 8636
-    expose: true
-    exposedPort: 636
-    protocol: TCP
 
 service:
   type: ClusterIP
