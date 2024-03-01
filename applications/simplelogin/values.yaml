@@ -32,7 +32,7 @@ controllers:
         resources:
           requests:
             cpu: 50m
-            memory: 192Mi
+            memory: 168Mi
           limits:
             cpu: 1
             memory: 320Mi
@@ -57,11 +57,11 @@ controllers:
 
         resources:
           requests:
-            cpu: 10m
-            memory: 160Mi
+            cpu: 5m
+            memory: 168Mi
           limits:
-            cpu: 250m
-            memory: 256Mi
+            cpu: 100m
+            memory: 232Mi
 
       runner:
         image:
@@ -84,10 +84,10 @@ controllers:
         resources:
           requests:
             cpu: 3m
-            memory: 128Mi
+            memory: 136Mi
           limits:
-            cpu: 250m
-            memory: 192Mi
+            cpu: 100m
+            memory: 200Mi
 
     initContainers:
       init:
@@ -111,11 +111,11 @@ controllers:
 
         resources:
           requests:
-            cpu: 10m
-            memory: 128Mi
+            cpu: 50m
+            memory: 168Mi
           limits:
             cpu: 1
-            memory: 384Mi
+            memory: 320Mi
 
 serviceAccount:
   create: true

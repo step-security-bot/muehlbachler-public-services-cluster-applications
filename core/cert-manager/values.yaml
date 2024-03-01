@@ -13,10 +13,10 @@ webhook:
   resources:
     requests:
       cpu: 2m
-      memory: 20Mi
+      memory: 16Mi
     limits:
       cpu: 50m
-      memory: 56Mi
+      memory: 32Mi
 
 cainjector:
   resources:
@@ -25,12 +25,12 @@ cainjector:
       memory: 40Mi
     limits:
       cpu: 50m
-      memory: 64Mi
+      memory: 56Mi
 
 resources:
   requests:
     cpu: 2m
-    memory: 32Mi
+    memory: 28Mi
   limits:
     cpu: 100m
-    memory: 64Mi
+    memory: 56Mi
