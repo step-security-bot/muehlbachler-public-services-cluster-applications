@@ -6,5 +6,6 @@ resources:
   - ./external-secret-dkim-key.yaml
   - ./external-secret-simplelogin-database.yaml
   - ./external-secret-simplelogin-config.yaml
+  - ./external-secret-simplelogin-oidc.yaml
   - ./configmap-init.yaml
   - ./configmap.yaml

@@ -22,3 +22,6 @@ data:
   GNUPGHOME: /sl/gnupg
   ALLOWED_REDIRECT_DOMAINS: "[]"
   NAMESERVERS: "1.1.1.1"
+  CONNECT_WITH_OIDC_ICON: fa-cloud
+  OIDC_SCOPES: openid email profile
+  OIDC_NAME_FIELD: name
