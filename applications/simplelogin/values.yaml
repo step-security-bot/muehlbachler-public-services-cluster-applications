@@ -9,7 +9,7 @@ controllers:
         image:
           repository: simplelogin/app-ci
           pullPolicy: IfNotPresent
-          tag: v4.40.2
+          tag: v4.41.0
 
         command:
           - gunicorn
@@ -28,6 +28,8 @@ controllers:
               name: simplelogin-config
           - secretRef:
               name: simplelogin-database
+          - secretRef:
+              name: simplelogin-oidc
 
         resources:
           requests:
