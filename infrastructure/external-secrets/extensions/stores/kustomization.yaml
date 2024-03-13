@@ -6,3 +6,4 @@ resources:
   - ./email.yaml
   - ./flux.yaml
   - ./mail-relay.yaml
+  - ./simplelogin.yaml
