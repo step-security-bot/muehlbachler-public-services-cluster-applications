@@ -7,7 +7,7 @@ spec:
   provider:
     vault:
       server: https://vault.platform.muehlbachler.io:8200
-      path: kubernetes-home-cluster
+      path: kubernetes-public-services-cluster
       version: v2
       auth:
         appRole:
