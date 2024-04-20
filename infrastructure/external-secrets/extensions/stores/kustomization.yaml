@@ -2,9 +2,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./database.yaml
-  - ./email.yaml
-  - ./flux.yaml
-  - ./mail-relay.yaml
-  - ./simplelogin.yaml
   - ./vault.yaml
