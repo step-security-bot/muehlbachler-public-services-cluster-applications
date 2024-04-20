@@ -7,3 +7,4 @@ resources:
   - ./flux.yaml
   - ./mail-relay.yaml
   - ./simplelogin.yaml
+  - ./vault.yaml
