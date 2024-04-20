@@ -147,7 +147,7 @@ ingress:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: cluster-issuer-email-muehlbachler-io
-      external-dns.alpha.kubernetes.io/provider: public
+      external-dns.alpha.kubernetes.io/provider: public-abc # FIXME: replace with actual provider
     hosts:
       - host: &domain aliases.email.muehlbachler.io
         paths:

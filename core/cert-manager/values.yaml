@@ -1,10 +1,6 @@
 ---
 installCRDs: true
 
-serviceAccount:
-  annotations:
-    iam.gke.io/gcp-service-account: pub-svcs-cert-manager-prod@public-services-402810.iam.gserviceaccount.com
-
 extraArgs:
   - "--dns01-recursive-nameservers-only"
   - "--dns01-recursive-nameservers=1.1.1.1:53,1.0.0.1:53"

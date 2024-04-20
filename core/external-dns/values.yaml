@@ -4,10 +4,6 @@ image:
   repository: external-dns/external-dns
   tag: v0.14.1
 
-serviceAccount:
-  annotations:
-    iam.gke.io/gcp-service-account: pub-svcs-external-dns-prod@public-services-402810.iam.gserviceaccount.com
-
 crd:
   create: true
 
@@ -35,6 +31,7 @@ txtOwnerId: external-dns-public-services-cluster-prod
 txtPrefix: extdns-
 provider: google
 google:
+  serviceAccountSecret: external-dns-google
   project: muehlbachler-dns
 
 resources:

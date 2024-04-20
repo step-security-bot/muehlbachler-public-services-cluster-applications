@@ -16,3 +16,7 @@ spec:
         dns01:
           cloudDNS:
             project: muehlbachler-dns
+            hostedZoneName: email-muehlbachler-io
+            serviceAccountSecretRef:
+              key: credentials.json
+              name: cert-manager-google
