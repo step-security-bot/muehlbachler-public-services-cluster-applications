@@ -6,7 +6,7 @@ metadata:
 spec:
   provider:
     vault:
-      server: https://vault.platform.muehlbachler.io:8200
+      server: http://10.100.10.1:8200
       path: kubernetes-public-services-cluster
       version: v2
       auth:
