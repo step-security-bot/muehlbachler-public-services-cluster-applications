@@ -7,4 +7,3 @@ resources:
   - ./metallb/
   - ./traefik/
   - ./external-secrets/
-  - ./flux-extensions/
