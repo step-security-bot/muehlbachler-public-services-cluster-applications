@@ -27,6 +27,7 @@ managedRecordTypesFilters:
   - MX
   - TXT
 
+registry: noop
 txtOwnerId: external-dns-public-services-cluster-prod
 txtPrefix: extdns-
 provider: google
