@@ -133,8 +133,10 @@ service:
   handler:
     enabled: true
     controller: main
-    type: ClusterIP
-    clusterIP: None
+    type: LoadBalancer
+    ipFamilyPolicy: PreferDualStack
+    annotations:
+      metallb.universe.tf/loadBalancerIPs: "10.100.73.1,2a01:4f8:121:14e2:100:3:4:1"
     ports:
       email:
         enabled: true
