@@ -4,9 +4,10 @@ kind: Kustomization
 resources:
   - ./templates/extensions.yaml
   - ./templates/release.yaml
+  - ./templates/domains.yaml
 configMapGenerator:
-  - name: external-dns-values
+  - name: simplelogin-values
     files:
       - values.yaml=values.yaml
 configurations:
-  - kustomizeconfig.yaml
+  - kustomizeconfig.yml

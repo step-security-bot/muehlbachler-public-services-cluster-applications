@@ -8,5 +8,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: cluster-applications
-  path: ./applications/simplelogin/domains/
+  path: ./applications/simplelogin/simplelogin/domains/
   wait: false
