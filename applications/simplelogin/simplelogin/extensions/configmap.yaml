@@ -25,3 +25,5 @@ data:
   CONNECT_WITH_OIDC_ICON: fa-cloud
   OIDC_SCOPES: openid email profile
   OIDC_NAME_FIELD: name
+  # redis
+  MEM_STORE_URI: redis://redis-master:6379
