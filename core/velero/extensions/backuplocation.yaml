@@ -1,0 +1,15 @@
+---
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  name: google-cloud
+spec:
+  provider: velero.io/gcp
+
+  objectStorage:
+    bucket: infrastructure-backups-87d6dbd4-4928-4cdc-8d9d-2b19417489d9
+    prefix: cluster/public-services/backup
+
+  credential:
+    name: velero-google
+    key: credentials

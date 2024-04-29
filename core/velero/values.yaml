@@ -1,0 +1,35 @@
+---
+resources:
+  requests:
+    cpu: 50m
+    memory: 256Mi
+  limits:
+    cpu: 1
+    memory: 512Mi
+
+initContainers:
+  - name: velero-plugin-for-gcp
+    image: velero/velero-plugin-for-gcp:v1.9.1
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+      - mountPath: /target
+        name: plugins
+
+credentials:
+  extraSecretRef: velero-google
+
+configuration:
+  backupStorageLocation: []
+  volumeSnapshotLocation: []
+  defaultBackupStorageLocation: google-cloud
+
+deployNodeAgent: true
+nodeAgent:
+  podVolumePath: /var/lib/k0s/kubelet/pods
+  resources:
+    requests:
+      cpu: 50m
+      memory: 256Mi
+    limits:
+      cpu: 1
+      memory: 512Mi

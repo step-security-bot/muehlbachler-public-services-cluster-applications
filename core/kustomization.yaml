@@ -6,3 +6,4 @@ resources:
   - ./flux-extensions/
   - ./cert-manager/
   - ./external-dns/
+  - ./velero/
