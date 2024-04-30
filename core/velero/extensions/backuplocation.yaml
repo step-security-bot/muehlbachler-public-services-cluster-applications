@@ -8,7 +8,7 @@ spec:
 
   objectStorage:
     bucket: infrastructure-backups-87d6dbd4-4928-4cdc-8d9d-2b19417489d9
-    prefix: cluster/public-services/backup
+    prefix: cluster/public-services/backup/velero
 
   credential:
     name: velero-google
