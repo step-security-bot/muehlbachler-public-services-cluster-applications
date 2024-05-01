@@ -14,6 +14,7 @@ spec:
     includedNamespaces:
       - change-me
     includedResources:
+      - pod
       - pvc
       - pv
     # optionally, you can specify a label selector to filter the resources to backup
@@ -21,6 +22,8 @@ spec:
     #   matchLabels:
     #     velero.io/backup: "true"
     storageLocation: google-cloud
-    defaultVolumesToFsBackup: true
+    # optionally, you can default to file system backups for all volumes = opt-out approach
+    defaultVolumesToFsBackup: false
+    snapshotMoveData: false
     uploaderConfig:
       parallelFilesUpload: 8
