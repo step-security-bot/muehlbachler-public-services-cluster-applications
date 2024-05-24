@@ -9,7 +9,7 @@ controllers:
         image:
           repository: simplelogin/app-ci
           pullPolicy: IfNotPresent
-          tag: v4.43.0
+          tag: v4.44.3
 
         command:
           - gunicorn
@@ -43,7 +43,7 @@ controllers:
         image:
           repository: simplelogin/app-ci
           pullPolicy: IfNotPresent
-          tag: v4.43.0
+          tag: v4.44.3
 
         command:
           - python
@@ -69,7 +69,7 @@ controllers:
         image:
           repository: simplelogin/app-ci
           pullPolicy: IfNotPresent
-          tag: v4.43.0
+          tag: v4.44.3
 
         command:
           - python
@@ -96,7 +96,7 @@ controllers:
         image:
           repository: simplelogin/app-ci
           pullPolicy: IfNotPresent
-          tag: v4.43.0
+          tag: v4.44.3
 
         command:
           - sh
