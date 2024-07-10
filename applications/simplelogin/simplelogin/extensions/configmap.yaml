@@ -7,10 +7,11 @@ data:
   URL: https://aliases.email.muehlbachler.io
   # email settings
   EMAIL_DOMAIN: relay.email.muehlbachler.io
-  EMAIL_SERVERS_WITH_PRIORITY: "[(10, 'relay.email.muehlbachler.io.'), (20, 'relay.email.muehlbachler.io.')]"
+  EMAIL_SERVERS_WITH_PRIORITY: "[(10, 'mail.muehlbachler.io.')]"
   SUPPORT_EMAIL: "noreply@email.muehlbachler.io"
   SUPPORT_NAME: "E-Mail Relay"
-  POSTFIX_PORT: "1025"
+  POSTFIX_PORT: "587"
+  POSTFIX_SUBMISSION_TLS: "true"
   # user settings
   # run: UPDATE users SET lifetime = TRUE;
   DISABLE_ONBOARDING: "false"
