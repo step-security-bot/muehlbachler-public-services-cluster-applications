@@ -29,7 +29,6 @@
     },
     "flux": {
         "fileMatch": [
-            "(^|/)cluster/.+\\.ya?ml$",
             "(^|/)applications/.+\\.ya?ml$",
             "(^|/)core/.+\\.ya?ml$",
             "(^|/)infrastructure/.+\\.ya?ml$"
