@@ -4,7 +4,7 @@ rollOutCiliumPods: true
 ipam:
   mode: kubernetes
 ipv6:
-  enabled: true
+  enabled: false
 
 kubeProxyReplacement: true
 kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
