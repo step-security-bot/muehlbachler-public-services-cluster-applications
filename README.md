@@ -58,7 +58,10 @@ The following applications are defined in [`core/`](core/).
 
 The following applications are defined in [`applications/`](applications/).
 
-- [x] [SimpleLogin](https://simplelogin.io) - Open Source e-mail relay.
+### FH Burgenland
+
+The following applications are defined in [`fh-burgenland/`](fh-burgenland/).
+Those applications are ephemeral and will be deleted without notice.
 
 ---
 
