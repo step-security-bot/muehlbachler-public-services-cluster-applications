@@ -1,0 +1,61 @@
+---
+global:
+  domain: &domain argocd.bswe.fh-burgenland.muehlbachler.xyz
+  dualStack:
+    ipFamilyPolicy: PreferDualStack
+    ipFamilies:
+      - IPv4
+      - IPv6
+
+crds:
+  install: true
+  keep: false
+
+configs:
+  params:
+    server.insecure: true
+  cm:
+    dex.config: |
+      connectors:
+        - type: github
+          id: github
+          name: GitHub
+          config:
+            clientID: $argocd-oidc:clientID
+            clientSecret: $argocd-oidc:clientSecret
+            teamNameField: slug
+            orgs:
+              - name: your-github-org
+                teams:
+                  - your-team
+  rbac:
+    policy.csv: ''
+    # TODO: https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#using-sso-usersgroups
+    # TODO: https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-model-structure
+    # Policy rules are in the form:
+    #  p, subject, resource, action, object, effect
+    # Role definitions and bindings are in the form:
+    #  g, subject, inherited-subject
+    # policy.csv: |
+    #   p, role:org-admin, applications, *, */*, allow
+    #   p, role:org-admin, clusters, get, *, allow
+    #   p, role:org-admin, repositories, *, *, allow
+    #   p, role:org-admin, logs, get, *, allow
+    #   p, role:org-admin, exec, create, */*, allow
+    #   g, your-github-org:your-team, role:org-admin
+
+server:
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: cluster-issuer-muehlbachler-xyz
+      external-dns.alpha.kubernetes.io/provider: public
+      external-dns.alpha.kubernetes.io/target: 178.63.69.250,2a01:4f8:121:14e2:100:3:3:1
+      traefik.ingress.kubernetes.io/router.tls: "true"
+    extraTls:
+      - hosts:
+          - *domain
+        secretName: fh-burgenland-argocd-tls
+
+notifications:
+  enabled: false
