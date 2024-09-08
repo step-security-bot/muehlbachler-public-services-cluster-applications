@@ -1,0 +1,37 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: group-a
+spec:
+  permitOnlyProjectScopedClusters: true
+  description: Group A
+  sourceRepos:
+    - '*'
+  sourceNamespaces:
+    - group-a
+    - fh-burgenland-argocd
+  destinations:
+    - namespace: group-a
+      server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: Deployment
+    - group: '*'
+      kind: StatefulSet
+    - group: '*'
+      kind: ConfigMap
+    - group: '*'
+      kind: Secret
+    - group: '*'
+      kind: Ingress
+  roles:
+    - name: group-a
+      description: group-a privileges to group-a
+      policies:
+        - p, proj:group-a:group-a, applications, get, group-a/*, allow
+        - p, proj:group-a:group-a, applications, update/*, group-a/*, allow
+        - p, proj:group-a:group-a, applications, delete/*, group-a/*, allow
+        - p, proj:group-a:group-a, logs, get, group-a/*, allow
+      groups:
+        - my-oidc-group

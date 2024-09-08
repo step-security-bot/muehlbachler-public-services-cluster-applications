@@ -26,12 +26,10 @@ configs:
             teamNameField: slug
             orgs:
               - name: your-github-org
-                teams:
-                  - your-team
   rbac:
     policy.csv: ''
-    # TODO: https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#using-sso-usersgroups
-    # TODO: https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-model-structure
+    # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#using-sso-usersgroups
+    # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-model-structure
     # Policy rules are in the form:
     #  p, subject, resource, action, object, effect
     # Role definitions and bindings are in the form:

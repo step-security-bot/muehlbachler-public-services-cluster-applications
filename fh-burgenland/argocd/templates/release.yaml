@@ -4,8 +4,8 @@ kind: HelmRelease
 metadata:
   name: argocd
 spec:
-  releaseName: argocd
-  targetNamespace: argocd
+  releaseName: fh-burgenland-argocd
+  targetNamespace: fh-burgenland-argocd
   chart:
     spec:
       chart: argo-cd

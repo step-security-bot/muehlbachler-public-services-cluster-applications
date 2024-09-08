@@ -5,6 +5,7 @@ resources:
   - ./templates/repository.yaml
   - ./templates/extensions.yaml
   - ./templates/release.yaml
+  - ./templates/groups.yaml
 configMapGenerator:
   - name: argocd-values
     files:
