@@ -40,7 +40,7 @@ configs:
       p, role:org-admin, repositories, *, *, allow
       p, role:org-admin, logs, get, *, allow
       p, role:org-admin, exec, create, */*, allow
-      g, cloudventures-eu, role:org-admin
+      g, cloudventures-eu, role:admin
 
 server:
   ingress:
