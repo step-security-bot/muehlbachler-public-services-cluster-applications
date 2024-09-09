@@ -25,7 +25,8 @@ configs:
             clientSecret: $argocd-oidc:clientSecret
             teamNameField: slug
             orgs:
-              - name: your-github-org
+              - name: cloudventures-eu
+              - name: fhburgenland-bswe
   rbac:
     policy.csv: ''
     # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#using-sso-usersgroups

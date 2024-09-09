@@ -5,9 +5,9 @@ resources:
   - ./templates/repository.yaml
   - ./templates/extensions.yaml
   - ./templates/release.yaml
-  - ./templates/groups.yaml
+  # - ./templates/groups.yaml
 configMapGenerator:
-  - name: argocd-values
+  - name: fh-burgenland-argocd-values
     files:
       - values.yaml=values.yaml
 configurations:
