@@ -24,6 +24,11 @@ configs:
             clientID: $argocd-oidc:clientID
             clientSecret: $argocd-oidc:clientSecret
             teamNameField: slug
+            insecureEnableGroups: true
+            scopes:
+              - profile
+              - email
+              - groups
             orgs:
               - name: cloudventures-eu
               - name: fhburgenland-bswe
