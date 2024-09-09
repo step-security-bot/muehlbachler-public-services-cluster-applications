@@ -24,14 +24,10 @@ configs:
             clientID: $argocd-oidc:clientID
             clientSecret: $argocd-oidc:clientSecret
             teamNameField: slug
-            insecureEnableGroups: true
-            loadAllGroups: true
-            scopes:
-              - profile
-              - email
-              - groups
             orgs:
               - name: fhburgenland-bswe
+                teams:
+                  - dmuehlbachler
   rbac:
     policy.default: role:readonly
     # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#using-sso-usersgroups
