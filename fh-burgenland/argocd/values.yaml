@@ -25,6 +25,7 @@ configs:
             clientSecret: $argocd-oidc:clientSecret
             teamNameField: slug
             insecureEnableGroups: true
+            loadAllGroups: true
             scopes:
               - profile
               - email
