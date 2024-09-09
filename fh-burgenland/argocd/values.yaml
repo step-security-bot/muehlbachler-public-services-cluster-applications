@@ -31,9 +31,9 @@ configs:
               - email
               - groups
             orgs:
-              - name: cloudventures-eu
               - name: fhburgenland-bswe
   rbac:
+    policy.default: role:readonly
     # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#using-sso-usersgroups
     # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-model-structure
     # Policy rules are in the form:
@@ -46,7 +46,7 @@ configs:
       p, role:org-admin, repositories, *, *, allow
       p, role:org-admin, logs, get, *, allow
       p, role:org-admin, exec, create, */*, allow
-      g, cloudventures-eu, role:admin
+      g, fhburgenland-bswe:dmuehlbachler, role:admin
 
 server:
   ingress:
