@@ -12,3 +12,8 @@ spec:
   destination:
     namespace: fh-burgenland-argocd
     server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
