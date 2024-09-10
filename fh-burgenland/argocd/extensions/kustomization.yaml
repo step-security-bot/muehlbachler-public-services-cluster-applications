@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: fh-burgenland-argocd
 resources:
   - ./external-secret-argocd-oidc.yaml
+  - ./external-secret-argocd-github.yaml
   - ./repository-apps.yaml
   - ./external-secret-assignment-repository.yaml
   - ./external-secret-ghcr-credentials.yaml

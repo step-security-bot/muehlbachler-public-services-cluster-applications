@@ -79,5 +79,53 @@ server:
           - *domain
         secretName: fh-burgenland-argocd-tls
 
+applicationSet:
+  webhook:
+    ingress:
+      enabled: true
+      annotations:
+      cert-manager.io/cluster-issuer: cluster-issuer-muehlbachler-xyz
+      external-dns.alpha.kubernetes.io/provider: public
+      external-dns.alpha.kubernetes.io/target: 178.63.69.250,2a01:4f8:121:14e2:100:3:3:1
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      hosts:
+        - &webhookDomain webhook.argocd.bswe.fh-burgenland.muehlbachler.xyz
+      tls:
+        - secretName: fh-burgenland-argocd-webhook-tls
+          hosts:
+            - *webhookDomain
+
 notifications:
-  enabled: false
+  argocdUrl: https://argocd.bswe.fh-burgenland.muehlbachler.xyz
+  secret:
+    create: true
+  cm:
+    create: true
+  notifiers:
+    service.github: |
+      appID: $argocd-github:appId
+      installationID: $argocd-github:installationId
+      privateKey: $argocd-github:privateKey
+  triggers:
+    trigger.on-deployed: |
+      - description: Application is synced and healthy. Triggered once per commit.
+        send:
+        - app-deployed
+        when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy'
+  templates:
+    template.app-deployed: |
+      message: |
+        Application {{.app.metadata.name}} is now running in a preview environment.
+      github:
+        repoURLPath: "{{ .app.spec.source.repoURL }}"
+        revisionPath: "{{ .app.metadata.annotations.revision }}"
+        status:
+          state: success
+          label: "continuous-delivery/{{ .app.metadata.name }}"
+          targetURL: "{{ .context.argocdUrl }}/applications/{{ .app.metadata.name }}?operation=true"
+        deployment:
+          state: success
+          environment: preview-{{ .app.metadata.name }}
+          environmentURL: "https://{{ .app.metadata.name }}.demo.bswe.fh-burgenland.muehlbachler.xyz"
+          logURL: "{{ .context.argocdUrl }}/applications/{{ .app.metadata.name }}?operation=true"
+          requiredContexts: []
