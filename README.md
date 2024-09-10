@@ -53,6 +53,7 @@ The following applications are defined in [`core/`](core/).
 - [x] [External DNS with Google Cloud DNS integration](https://github.com/kubernetes-sigs/external-dns) - Creates DNS records in Google Cloud DNS domains for publicly reachable services.
 - [x] [Velero](https://velero.io) - Performs cluster backups.
   - [x] Includes deployment of backup schedules.
+- [x] [Reflector](https://github.com/EmberStack/kubernetes-reflector) - Synchronizes Kubernetes resources across namespaces.
 
 ### (User) Applications
 
