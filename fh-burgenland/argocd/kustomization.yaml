@@ -5,7 +5,6 @@ resources:
   - ./templates/repository.yaml
   - ./templates/extensions.yaml
   - ./templates/release.yaml
-  # - ./templates/groups.yaml
 configMapGenerator:
   - name: fh-burgenland-argocd-values
     files:
