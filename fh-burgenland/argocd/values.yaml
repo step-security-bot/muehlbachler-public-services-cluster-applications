@@ -14,6 +14,7 @@ crds:
 configs:
   params:
     server.insecure: true
+    application.namespaces: "*"
   cm:
     resource.customizations.health.argoproj.io_Application: |
       hs = {}
