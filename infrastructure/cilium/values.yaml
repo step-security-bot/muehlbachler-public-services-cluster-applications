@@ -14,6 +14,9 @@ kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
 k8sServiceHost: 127.0.0.1
 k8sServicePort: 6443
 
+bpf:
+  masquerade: true
+
 k8sClientRateLimit:
   qps: 30
   burst: 60
