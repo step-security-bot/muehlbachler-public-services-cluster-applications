@@ -49,8 +49,8 @@ configs:
             teamNameField: slug
             orgs:
               - name: fhburgenland-bswe
-  rbac:
-    policy.default: role:readonly
+  # rbac:
+  #   policy.default: role:readonly
     # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#using-sso-usersgroups
     # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-model-structure
     # Policy rules are in the form:
