@@ -49,21 +49,23 @@ configs:
             teamNameField: slug
             orgs:
               - name: fhburgenland-bswe
-  # rbac:
-  #   policy.default: role:readonly
+  rbac:
+    policy.default: role:unauthenticated
     # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#using-sso-usersgroups
     # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-model-structure
     # Policy rules are in the form:
     #  p, subject, resource, action, object, effect
     # Role definitions and bindings are in the form:
     #  g, subject, inherited-subject
+    # g, fhburgenland-bswe:dmuehlbachler, role:admin
     # policy.csv: |
     #   p, role:org-admin, applications, *, */*, allow
     #   p, role:org-admin, clusters, get, *, allow
     #   p, role:org-admin, repositories, *, *, allow
     #   p, role:org-admin, logs, get, *, allow
     #   p, role:org-admin, exec, create, */*, allow
-    #   g, fhburgenland-bswe:dmuehlbachler, role:admin
+    #   p, role:unauthenticated, repositories, get, *, allow
+    #   p, role:unauthenticated, clusters, get, *, allow
 
 server:
   ingress:
